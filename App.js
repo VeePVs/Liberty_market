@@ -7,7 +7,11 @@ import {NavigationContainer} from '@react-navigation/native';
 const Stack = createNativeStackNavigator();
 
 const App = () => (
-
+    <NavigationContainer>
+        <Stack.Navigator>
+            <Stack.Screen name="Login" component={Login} options={{title: 'Inicio de sesión'}}/>
+        </Stack.Navigator>
+    </NavigationContainer>
 );
 
 export default App;
