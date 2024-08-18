@@ -10,35 +10,33 @@ const usuario = [{
 },
 ]
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [visible, setVisibleIcon] = React.useState(false);
     const [visiblePassword, setVisiblePassword] = React.useState(true);
 
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar animated={true} statusBarStyle="dark-content" />
-            <Text style={styles.title}>Inicio de sesión</Text>
-            <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={"#000"}  maxLength={10}/>
+            <Text style={styles.title}>Bienvenido a "nombre de la app"</Text>
+            <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={"#E1F7F5"}  maxLength={10}/>
             <View style={styles.containerPassword}>
-                <TextInput placeholder="Ingresa la contraseña" style={styles.inputPassword} placeholderTextColor={"#000"} maxLength={8} secureTextEntry={visiblePassword}/>
+                <TextInput placeholder="Ingresa la contraseña" style={styles.inputPassword} placeholderTextColor={"#E1F7F5"} maxLength={8} secureTextEntry={visiblePassword}/>
                 <Icon name={visible== false ? 'eye-slash': 'eye'} size={30} style={styles.icon} onPress={()=>{
                     setVisibleIcon(!visible);
                     setVisiblePassword(!visiblePassword);
                 }}/>
             </View>
-            <Pressable>
-                <Text>Continuar</Text>
+            <Pressable style={styles.generalButton} onPress={()=>{
+                navigation.navigate('Register')
+            }}>
+                <Text style={styles.textButton}>¿No tienes cuenta?</Text>
+            </Pressable>
+            <Pressable style={styles.registerButton}>
+                <Text style={styles.textButton}>Continuar</Text>
             </Pressable>
 
         </SafeAreaView>
     );
 };
-/*
-function verifyPassword(password) {
-    const pattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d!@#$%^&*(),.?":{}|<>]{1,8}$/;
-    if (!password.match(pattern)) {
 
-    }
-}
-*/
 export default Login;
