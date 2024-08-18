@@ -4,12 +4,14 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "#1E0342",
     },
     title: {
-        color: '#000',
-        fontsize: 5,
-        fontWeight: 'bold'
+        color: '#E1F7F5',
+        fontSize: 28,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     input: {
         height: 40,
@@ -17,8 +19,8 @@ export const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        borderColor:'#E1F7F5',
         borderRadius: 10,
-        color: '#222',
     },
     containerPassword: {
         flexDirection: 'row',
@@ -30,14 +32,15 @@ export const styles = StyleSheet.create({
         margin: 0,
         borderWidth: 1,
         padding: 10,
-        color: '#222',
+        borderColor:'#E1F7F5',
+        color: '#E1F7F5',
         borderTopRightRadius: 10
     },
     icon: {
         height: 40,
         width:40,
-        color: '#222',
-        borderColor:'#222',
+        color: '#E1F7F5',
+        borderColor:'#E1F7F5',
         borderBottomWidth:1,
         borderTopWidth:1,
         borderRightWidth: 1,
@@ -45,6 +48,28 @@ export const styles = StyleSheet.create({
         borderBottomLeftRadius: 10,
         textAlign: 'center',
         textAlignVertical: 'center'
+    },
+    textButton: {
+        fontSize: 18,
+        color: '#1E0342',
+    },
+    registerButton: {
+        backgroundColor: '#E1F7F5',
+        height: 40,
+        width: 150,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        marginTop: 10
+    },
+    generalButton: {
+        backgroundColor: '#9AC8CD',
+        height: 40,
+        width: 200,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        marginTop: 10
     }
 })
 
