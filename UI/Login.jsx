@@ -16,7 +16,7 @@ const Login = ({navigation}) => {
             <StatusBar animated={true} statusBarStyle="dark-content" />
             <Text style={styles.title}>Bienvenido a "nombre de la app"</Text>
             <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={"#E1F7F5"}  maxLength={10}/>
-            <PasswordInput />
+            <PasswordInput placeholder={"Ingresa la contraseña"}/>
             <Pressable style={styles.generalButton} onPress={()=>{
                 navigation.navigate('Register')
             }}>
