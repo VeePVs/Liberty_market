@@ -7,29 +7,38 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "#1E0342",
     },
+    containerRegister: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#000",
+    },
     title: {
         color: '#E1F7F5',
         fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'center',
+        marginBottom: 20
     },
     input: {
         height: 40,
         width: 300,
-        margin: 12,
+        marginBottom: 12,
         borderWidth: 1,
         padding: 10,
+        color: "#E1F7F5",
         borderColor:'#E1F7F5',
-        borderRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
     },
     containerPassword: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginBottom: 12
     },
     inputPassword:{
         height: 40,
         width: 260,
-        margin: 0,
         borderWidth: 1,
         padding: 10,
         borderColor:'#E1F7F5',
@@ -45,7 +54,6 @@ export const styles = StyleSheet.create({
         borderTopWidth:1,
         borderRightWidth: 1,
         borderBottomRightRadius: 10,
-        borderBottomLeftRadius: 10,
         textAlign: 'center',
         textAlignVertical: 'center'
     },
