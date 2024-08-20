@@ -13,6 +13,23 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "#000",
     },
+    containerListItems: {
+        flex: 1,
+        alignItems: "center",
+    },
+    containerItem: {
+        backgroundColor: "#000",
+        flexDirection: "row",
+        alignContent: "space-between",
+        justifyContent: "space-between",
+        borderRadius: 12,
+        width: "55%",
+        marginTop: 15
+    },
+    containerItemText: {
+        width: 220,
+        padding: 10
+    },
     title: {
         color: '#E1F7F5',
         fontSize: 28,
@@ -78,6 +95,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         marginTop: 10
+    },
+    imgItem: {
+        borderBottomRightRadius: 10,
     }
 })
 

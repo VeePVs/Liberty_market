@@ -22,7 +22,9 @@ const Login = ({navigation}) => {
             }}>
                 <Text style={styles.textButton}>¿No tienes cuenta?</Text>
             </Pressable>
-            <Pressable style={styles.registerButton}>
+            <Pressable style={styles.registerButton} onPress={()=>{
+                navigation.navigate('ListItems')
+            }}>
                 <Text style={styles.textButton}>Continuar</Text>
             </Pressable>
         </SafeAreaView>
