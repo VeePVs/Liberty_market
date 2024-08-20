@@ -29,8 +29,8 @@ export default function Register() {
   return (
     <SafeAreaView style={styles.containerRegister}>
         <Text style={styles.title}>Inicia con "Nombre app"</Text>
-        <TextInput placeholder={"Ingresa tu contraseña"} maxLength={10} style={styles.input} placeholderTextColor={"#E1F7F5"} />
-        <PasswordInput placeholder={"Ingresa la contraseña"}/>
+        <TextInput placeholder={"Crea un usuario"} maxLength={10} style={styles.input} placeholderTextColor={"#E1F7F5"} />
+        <PasswordInput placeholder={"Crea la contraseña"}/>
         <PasswordInput placeholder={"Confirma tu contraseña"}/>
         <TextInput placeholder={"Ingresa tu correo electrónico"} maxLength={10} style={styles.input} placeholderTextColor={"#E1F7F5"} />
         <TextInput placeholder={"Fecha de nacimiento 'DD/MM/AAAA'"} maxLength={8} style={styles.input} placeholderTextColor={"#E1F7F5"} />
@@ -39,7 +39,7 @@ export default function Register() {
             setSelected={handleDepartmentChange} 
             data={colombia} 
             save="value"
-            inputStyles={{width: 240}}
+            inputStyles={{width: 240, color: "#E1F7F5"}}
             boxStyles={{borderColor:'#E1F7F5', marginBottom:12}}
             dropdownStyles={{width: 300}}
             notFoundText='Departamento no encontrado'
@@ -50,7 +50,7 @@ export default function Register() {
             setSelected={(val) => setSelectedCity(val)} 
             data={Cities} 
             save="value"
-            inputStyles={{width: 240}}
+            inputStyles={{width: 240, color: "#E1F7F5"}}
             dropdownStyles={{width: 300}}
             boxStyles={{borderColor:'#E1F7F5', marginBottom:12}}
             notFoundText='Ciudad no encontrada'
