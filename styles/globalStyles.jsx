@@ -15,14 +15,15 @@ export const styles = StyleSheet.create({
     },
     containerListItems: {
         flex: 1,
+        backgroundColor: "#1E0342",
         alignItems: "center",
     },
     containerItem: {
-        backgroundColor: "#000",
+        backgroundColor: "#0E46A3",
         flexDirection: "row",
         alignContent: "space-between",
         justifyContent: "space-between",
-        borderRadius: 12,
+        borderTopStartRadius: 12,
         width: "55%",
         marginTop: 15
     },
@@ -30,12 +31,37 @@ export const styles = StyleSheet.create({
         width: 220,
         padding: 10
     },
+    containerItemDetail: {
+        backgroundColor: "#FFF",
+        flex: 1,
+        alignItems: "center",
+    },
     title: {
         color: '#E1F7F5',
         fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20
+    },
+    nameItem: {
+        fontSize: 28,
+        color: '#FFF',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        width: "100%",
+        padding: 15,
+        backgroundColor: "#1E0342"
+    },
+    detailsItems: {
+        flex:1,
+        padding: 20,
+        width: '100%',
+        backgroundColor: "#9AC8CD"
+    },
+    priceItem: {
+        color: '#020',
+        fontSize: 24,
+        fontWeight: "800"
     },
     input: {
         height: 40,

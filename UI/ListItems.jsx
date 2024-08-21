@@ -152,6 +152,7 @@ export default function ListItems({navigation}) {
     function detailItemFunction(id ,price, name, description, image, features) {
         navigation.navigate('ItemDetail', {
             id: id,
+            price: price,
             name: name,
             description: description,
             image: image,
