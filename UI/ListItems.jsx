@@ -8,6 +8,7 @@ export default function ListItems({navigation}) {
 
     const items = [
         {
+            id: 1,
             price: 299999,
             name: 'Smartphone Samsung Galaxy A52',
             description: 'Smartphone con pantalla de 6.5", 128GB de almacenamiento y cámara de 64MP.',
@@ -21,6 +22,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 2,
             price: 1599999,
             name: 'Laptop Dell Inspiron 15 3000',
             description: 'Laptop con procesador Intel Core i5, 8GB RAM, 256GB SSD.',
@@ -34,6 +36,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 3,
             price: 129999,
             name: 'Smartwatch Xiaomi Mi Band 6',
             description: 'Pulsera inteligente con monitoreo de actividad física y frecuencia cardíaca.',
@@ -47,6 +50,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 4,
             price: 79999,
             name: 'Auriculares Bluetooth Sony WH-CH510',
             description: 'Auriculares inalámbricos con sonido de alta calidad y batería de larga duración.',
@@ -60,6 +64,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 5,
             price: 24999,
             name: 'Parlante Bluetooth JBL GO 2',
             description: 'Parlante portátil con sonido de alta calidad y resistente al agua.',
@@ -73,6 +78,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 6,
             price: 139999,
             name: 'Tablet Amazon Fire HD 8',
             description: 'Tablet con pantalla HD de 8", 32GB de almacenamiento y Alexa integrado.',
@@ -86,6 +92,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 7,
             price: 59999,
             name: 'Cámara de Seguridad Xiaomi Mi Home 360',
             description: 'Cámara de seguridad con visión nocturna y detección de movimiento.',
@@ -99,6 +106,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 8,
             price: 99999,
             name: 'Audífonos In-Ear Apple AirPods (2da Generación)',
             description: 'Audífonos inalámbricos con chip H1 y estuche de carga.',
@@ -112,6 +120,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 9,
             price: 179999,
             name: 'Reloj Inteligente Fitbit Versa 2',
             description: 'Reloj inteligente con monitor de actividad, ritmo cardíaco y Alexa integrada.',
@@ -125,6 +134,7 @@ export default function ListItems({navigation}) {
             ]
         },
         {
+            id: 10,
             price: 44999,
             name: 'Cargador Inalámbrico Samsung EP-P1300',
             description: 'Cargador inalámbrico rápido compatible con varios dispositivos.',
@@ -139,8 +149,9 @@ export default function ListItems({navigation}) {
         }
     ];
     
-    function detailItemFunction(price, name, description, image, features) {
+    function detailItemFunction(id ,price, name, description, image, features) {
         navigation.navigate('ItemDetail', {
+            id: id,
             name: name,
             description: description,
             image: image,
@@ -153,7 +164,7 @@ export default function ListItems({navigation}) {
             <FlatList 
                 data={items}
                 renderItem={({item}) => <Item name={item.name} description={item.description} price={item.price} image={item.image} onPress={()=>{
-                    detailItemFunction(item.price, item.name, item.description, item.image, item.features);
+                    detailItemFunction(item.id,item.price, item.name, item.description, item.image, item.features);
                 }}/>}
                 keyExtractor={item => item.id}
             />
