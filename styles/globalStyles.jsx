@@ -15,21 +15,38 @@ export const styles = StyleSheet.create({
     },
     containerListItems: {
         flex: 1,
-        backgroundColor: "#1E0342",
-        alignItems: "center",
+        backgroundColor: "#FFF",
+        width: "auto",
+        alignItems:"center",
+        padding: 12,
     },
     containerItem: {
-        backgroundColor: "#0E46A3",
-        flexDirection: "row",
-        alignContent: "space-between",
-        justifyContent: "space-between",
-        borderTopStartRadius: 12,
-        width: "55%",
-        marginTop: 15
+        borderWidth: 0.1,
+        alignItems: "center",
+        width: 260,
+        height: 340,
+        marginTop: 15,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation:1,
+        paddingTop:5
     },
     containerItemText: {
-        width: 220,
-        padding: 10
+        width: 240,
+        height: 160,
+        padding: 10,
+        alignItems: 'flex-start'
+    },
+    imgItem: {
+        width:160,
+        height:180,
+        borderBottomRightRadius: 10,
+    },
+    textItem: {
+        color: "#000",
+        fontWeight: "500",
     },
     containerItemDetail: {
         backgroundColor: "#FFF",
@@ -122,9 +139,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 10
     },
-    imgItem: {
-        borderBottomRightRadius: 10,
-    }
+    
 })
 
 export default styles;
