@@ -10,7 +10,7 @@ export default function ({placeholder,onChangeText}) {
   return (
     <View style={styles.containerPassword}>
                 <TextInput placeholder={placeholder} style={styles.inputPassword} placeholderTextColor={"#E1F7F5"} maxLength={8} secureTextEntry={visiblePassword} onChangeText={onChangeText}/>
-                <Icon name={visibleIcon== false ? 'eye-slash': 'eye'} size={30} style={styles.icon} onPress={()=>{
+                <Icon name={visibleIcon== false ? 'eye-slash': 'eye'} size={30} style={styles.iconPassword} onPress={()=>{
                     setVisibleIcon(!visibleIcon);
                     setVisiblePassword(!visiblePassword);
                 }}/>

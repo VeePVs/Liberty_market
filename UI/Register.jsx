@@ -28,6 +28,7 @@ export default function Register() {
 
   return (
     <SafeAreaView style={styles.containerRegister}>
+      
         <Text style={styles.title}>Inicia con "Nombre app"</Text>
         <TextInput placeholder={"Crea un usuario"} maxLength={10} style={styles.input} placeholderTextColor={"#E1F7F5"} />
         <PasswordInput placeholder={"Crea la contraseña"}/>

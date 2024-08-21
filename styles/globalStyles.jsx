@@ -1,17 +1,24 @@
 import {StyleSheet} from 'react-native'
 
+    const colors = {
+        primary_color: "#9D34E0",
+        secondary_color: "#3E34E0",
+        tertiary_color: "#A1E3CA",
+        quaternary_color: "#E1F7F5",
+    }
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#1E0342",
+        backgroundColor: `${colors.primary_color}`,
     },
     containerRegister: {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#000",
+        backgroundColor: `${colors.secondary_color}`,
     },
     containerListItems: {
         flex: 1,
@@ -51,10 +58,11 @@ export const styles = StyleSheet.create({
     containerItemDetail: {
         backgroundColor: "#FFF",
         flex: 1,
+        width: "auto",
         alignItems: "center",
     },
     title: {
-        color: '#E1F7F5',
+        color: `${colors.quaternary_color}`,
         fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -70,15 +78,24 @@ export const styles = StyleSheet.create({
         backgroundColor: "#1E0342"
     },
     detailsItems: {
-        flex:1,
-        padding: 20,
+        height: "auto",
+        gap: 10,
+        padding: 10,
         width: '100%',
-        backgroundColor: "#9AC8CD"
     },
     priceItem: {
         color: '#020',
         fontSize: 24,
         fontWeight: "800"
+    },
+    descriptionItem: {
+        color: "#000",
+        fontSize: 20
+    },
+    questionsComments: {
+        color: "#000",
+        fontSize: 18,
+        fontWeight: "500"
     },
     input: {
         height: 40,
@@ -86,10 +103,21 @@ export const styles = StyleSheet.create({
         marginBottom: 12,
         borderWidth: 1,
         padding: 10,
-        color: "#E1F7F5",
-        borderColor:'#E1F7F5',
+        color: `${colors.quaternary_color}`,
+        borderColor:`${colors.quaternary_color}`,
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
+    },
+    inputQuestionsComments: {
+        width: "auto",
+        height: 80,
+        borderColor: "#000",
+        borderRadius: 10,
+        borderWidth: 0.8,
+    },
+    containerQC: {
+        padding: 15,
+        borderBottomWidth: 0.2
     },
     containerPassword: {
         flexDirection: 'row',
@@ -101,15 +129,18 @@ export const styles = StyleSheet.create({
         width: 260,
         borderWidth: 1,
         padding: 10,
-        borderColor:'#E1F7F5',
-        color: '#E1F7F5',
+        borderColor:`${colors.quaternary_color}`,
+        color: `${colors.quaternary_color}`,
         borderTopRightRadius: 10
     },
-    icon: {
+    iconLogin: {
+        color:`${colors.quaternary_color}`
+    },
+    iconPassword: {
         height: 40,
         width:40,
-        color: '#E1F7F5',
-        borderColor:'#E1F7F5',
+        color: `${colors.quaternary_color}`,
+        borderColor: `${colors.quaternary_color}`,
         borderBottomWidth:1,
         borderTopWidth:1,
         borderRightWidth: 1,
@@ -122,7 +153,7 @@ export const styles = StyleSheet.create({
         color: '#1E0342',
     },
     registerButton: {
-        backgroundColor: '#E1F7F5',
+        backgroundColor: `${colors.quaternary_color}`,
         height: 40,
         width: 150,
         alignItems: 'center',
@@ -131,7 +162,7 @@ export const styles = StyleSheet.create({
         marginTop: 10
     },
     generalButton: {
-        backgroundColor: '#9AC8CD',
+        backgroundColor: `${colors.tertiary_color}`,
         height: 40,
         width: 200,
         alignItems: 'center',

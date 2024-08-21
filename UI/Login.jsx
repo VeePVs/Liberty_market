@@ -3,7 +3,7 @@ import {Image, Pressable, StatusBar, Text, TextInput, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from '../styles/globalStyles'
 import PasswordInput from './Components/PasswordInput';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const Login = ({navigation}) => {
@@ -31,6 +31,7 @@ const Login = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar animated={true} statusBarStyle="dark-content" />
+            <Icon name={'shopping-cart'} size={100} style={styles.iconLogin}/>
             <Text style={styles.title}>Bienvenido a "nombre de la app"</Text>
             <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={"#E1F7F1"}  maxLength={10} onChangeText={text => onChangeUser(text)}/>
             <PasswordInput placeholder={"Ingresa la contraseña"} onChangeText={text => onChangePassword(text)}/>

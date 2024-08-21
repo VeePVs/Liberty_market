@@ -2,7 +2,7 @@ import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 import styles from '../../styles/globalStyles'
 
-export default function Item({name, description, price, image, onPress}) {
+export default function Item({name, description, price, image, questions, comments, onPress}) {
   return (
     <Pressable style={styles.containerItem} onPress={onPress}>
         <Image style={styles.imgItem} source={{uri: image}}/>
