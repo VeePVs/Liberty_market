@@ -42,6 +42,7 @@ export default function Register() {
             inputStyles={{width: 240, color: "#E1F7F5"}}
             boxStyles={{borderColor:'#E1F7F5', marginBottom:12}}
             dropdownStyles={{width: 300}}
+            dropdownTextStyles={{color: "#E1F7F5"}}
             notFoundText='Departamento no encontrado'
             placeholder='Selecciona un departamento'            
             searchPlaceholder='Busca tu ciudad'      

@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Login from './UI/Login';
 import Register from './UI/Register';
 import ListItems from './UI/ListItems';
+import ItemDetail from './UI/ItemDetail';
 
 //It's for managing windows in the app
 const Stack = createNativeStackNavigator();
@@ -13,7 +14,8 @@ const App = () => (
         <Stack.Navigator>
             <Stack.Screen name={'Login'} component={Login} options={{title: 'Inicio de sesión'}}/>
             <Stack.Screen name={'Register'} component={Register} options={{title: 'Registro de usuarios'}}/>
-            <Stack.Screen name={'ListItems'} component={ListItems} options={{title: 'Lista de productos'}}/>
+            <Stack.Screen name={'ListItems'} component={ListItems} options={{title: 'Lista de productos', headerBackVisible: false}}/>
+            <Stack.Screen name={'ItemDetail'} component={ItemDetail} options={{title: 'Detalle del producto'}}/>
         </Stack.Navigator>
     </NavigationContainer>
 );

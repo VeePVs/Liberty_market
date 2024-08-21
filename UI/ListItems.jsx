@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Item from './Components/Item';
 import styles from '../styles/globalStyles';
 
-export default function ListItems() {
+export default function ListItems({navigation}) {
 
     const items = [
         {
@@ -139,12 +139,22 @@ export default function ListItems() {
         }
     ];
     
+    function detailItemFunction(price, name, description, image, features) {
+        navigation.navigate('ItemDetail', {
+            name: name,
+            description: description,
+            image: image,
+            features: features,
+        })
+    }
 
   return (
         <SafeAreaView style={styles.containerListItems}>
             <FlatList 
                 data={items}
-                renderItem={({item}) => <Item name={item.name} description={item.description} price={item.price} image={item.image}/>}
+                renderItem={({item}) => <Item name={item.name} description={item.description} price={item.price} image={item.image} onPress={()=>{
+                    detailItemFunction(item.price, item.name, item.description, item.image, item.features);
+                }}/>}
                 keyExtractor={item => item.id}
             />
         </SafeAreaView>
