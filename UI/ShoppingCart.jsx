@@ -5,7 +5,7 @@ import ShopItem from './Components/ShopItem'
 import styles from '../styles/ShoppingCart'
 
 
-const ShoppingCart = () => {
+const ShoppingCart = ({navigation}) => {
     const items =[
         {
             id: 1,
@@ -23,6 +23,11 @@ const ShoppingCart = () => {
         }
     ]
 
+    function detailItemFunction(obj) {
+        console.log("Sending object:", obj); 
+        navigation.navigate('PaymentBranch', {items: obj})
+    }
+
   return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.containerItems}>
@@ -32,7 +37,9 @@ const ShoppingCart = () => {
                 <Text style={styles.textTotal}>Total a pagar: $1899998</Text>
             </ScrollView>
             <View style={styles.paymentContainer}>
-                <Pressable style={styles.paymentButton}>
+                <Pressable style={styles.paymentButton} onPress={()=>{
+                    detailItemFunction(items);
+                }}>
                     <Text style={styles.textPaymentButton}>Proceder con el pago</Text>
                 </Pressable>
             </View>
