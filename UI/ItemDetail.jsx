@@ -18,6 +18,7 @@ export default function ItemDetail({route, navigation}) {
             <View style={styles.detailsItems}>
                 <Text style={styles.priceItem}>${price}</Text>
                 <Text style={styles.descriptionItem}>{description}</Text>
+                <Text style={{ color: "#000" }}>Se aceptan pagos por PSE, Efecty y tarjetas de crédito</Text>
                 <View>
                     {features.map((element, index) => (
                         <Text key={index} style={{ color: "#000" }}>
@@ -39,8 +40,8 @@ export default function ItemDetail({route, navigation}) {
                 </View>
             </View>
             <View style={styles.containerQC}>
-                <Text style={styles.questionsComments}>¿Quieres dejar tu opinión?</Text>
-                <TextInput style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} multiline placeholder='Escribe una opinión sincera, deja tu comentario.' placeholderTextColor={"#8a8a8a"}/>
+                <Text style={styles.questionsComments}>Danos tu opinión</Text>
+                <TextInput editable={false} style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} multiline placeholder='Escribe una opinión sincera, deja tu comentario.' placeholderTextColor={"#8a8a8a"}/>
                 <Text style={{color: "#000"}}>Comentarios sobre el producto: </Text>
                 <View>
                     {comments.map((element, index) => (
