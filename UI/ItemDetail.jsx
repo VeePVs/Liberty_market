@@ -18,7 +18,7 @@ export default function ItemDetail({route, navigation}) {
             <View style={styles.detailsItems}>
                 <Text style={styles.priceItem}>${price}</Text>
                 <Text style={styles.descriptionItem}>{description}</Text>
-                <Text>Se aceptan pagos por PSE, Efecty y tarjetas de crédito</Text>
+                <Text style={{ color: "#000" }}>Se aceptan pagos por PSE, Efecty y tarjetas de crédito</Text>
                 <View>
                     {features.map((element, index) => (
                         <Text key={index} style={{ color: "#000" }}>

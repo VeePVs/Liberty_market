@@ -10,7 +10,8 @@ export default function Register() {
   const [selectedDepartment, setSelectedDepartment] = React.useState("");
   const [selectedCity, setSelectedCity] = React.useState("");
   const [Cities, setCities] = React.useState([]);
-  
+  //const pattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d!@#$%^&*(),.?":{}|<>]{1,8}$/;
+
   const colombia = [
     { key: '1', value: 'Antioquia', capital: 'Medellín', cities: ['Medellín', 'Bello', 'Itagüí', 'Envigado', 'Apartadó'] },
     { key: '2', value: 'Cundinamarca', capital: 'Bogotá', cities: ['Bogotá', 'Soacha', 'Girardot', 'Zipaquirá', 'Fusagasugá'] },
@@ -31,7 +32,7 @@ export default function Register() {
       
         <Text style={styles.title}>Inicia con "Nombre app"</Text>
         <TextInput placeholder={"Crea un usuario"} maxLength={10} style={styles.input} placeholderTextColor={"#E1F7F5"} />
-        <PasswordInput placeholder={"Crea la contraseña"}/>
+        <PasswordInput placeholder={"Crea la contraseña"} maxLength={8}/>
         <PasswordInput placeholder={"Confirma tu contraseña"}/>
         <TextInput placeholder={"Ingresa tu correo electrónico"} maxLength={10} style={styles.input} placeholderTextColor={"#E1F7F5"} />
         <TextInput placeholder={"Fecha de nacimiento 'DD/MM/AAAA'"} maxLength={8} style={styles.input} placeholderTextColor={"#E1F7F5"} />

@@ -1,7 +1,9 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, ScrollView, Pressable, Text } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import ShopItem from './Components/ShopItem'
+import styles from '../styles/ShoppingCart'
+
 
 const ShoppingCart = () => {
     const items =[
@@ -22,12 +24,18 @@ const ShoppingCart = () => {
     ]
 
   return (
-        <SafeAreaView>
-            <ScrollView>
+        <SafeAreaView style={styles.container}>
+            <ScrollView style={styles.containerItems}>
                 {items.map((element, index) => (
                     <ShopItem name={element.name} image={element.image} description={element.description} price={element.price}/>
                 ))}
+                <Text style={styles.textTotal}>Total a pagar: $1899998</Text>
             </ScrollView>
+            <View style={styles.paymentContainer}>
+                <Pressable style={styles.paymentButton}>
+                    <Text style={styles.textPaymentButton}>Proceder con el pago</Text>
+                </Pressable>
+            </View>
         </SafeAreaView>
     )
 }

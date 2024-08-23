@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 
     const colors = {
-        primary_color: "#1E0342",
+        primary_color: "#243E8C",
         secondary_color: "#3E34E0",
         tertiary_color: "#A1E3CA",
         quaternary_color: "#E1F7F5",
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: `${colors.secondary_color}`,
+        backgroundColor: `${colors.primary_color}`,
     },
     containerListItems: {
         flex: 1,
@@ -109,9 +109,11 @@ export const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
     },
     inputQuestionsComments: {
+        textAlignVertical: "top",
         width: "auto",
         height: 80,
         borderColor: "#000",
+        color: "#000",
         borderRadius: 10,
         borderWidth: 0.8,
     },
