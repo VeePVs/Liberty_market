@@ -4,8 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import PaymentItem from './Components/PaymentItem'
 import styles from '../styles/PaymentBranch'
 
-const supportedURL = 'https://google.com';
-
 
 const PaymentBranch = ({route }) => {
     const { items } = route.params; 

@@ -47,6 +47,10 @@ export default function Register() {
     if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
       age--;
     }
+
+    if (day > 31 || month > 12) {
+      return '';
+    }
   
     return age >= 18 && age <= 50;
   };
@@ -66,7 +70,7 @@ export default function Register() {
     }
 
     if (!validateAge(birthdate)) {
-      Alert.alert("Error", "No está en el rango de edad para crear la cuenta.");
+      Alert.alert("Error", "No está en el rango de edad para crear la cuenta o el formato esta incorrecto.");
       return;
     }
 
