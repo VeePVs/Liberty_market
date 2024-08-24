@@ -2,6 +2,8 @@ import { View, Text, Image, Pressable,TextInput, ScrollView } from 'react-native
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from '../styles/globalStyles';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Stars from './Components/Stars';
 
 export default function ItemDetail({route, navigation}) {
 
@@ -41,7 +43,14 @@ export default function ItemDetail({route, navigation}) {
             </View>
             <View style={styles.containerQC}>
                 <Text style={styles.questionsComments}>Danos tu opinión</Text>
-                <TextInput editable={false} style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} multiline placeholder='Escribe una opinión sincera, deja tu comentario.' placeholderTextColor={"#8a8a8a"}/>
+                <View style={{flexDirection: "row"}}>
+                    <Stars />
+                    <Stars />
+                    <Stars />
+                    <Stars />
+                    <Stars />
+                </View>
+                <TextInput style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} multiline placeholder='Escribe una opinión sincera, deja tu comentario.' placeholderTextColor={"#8a8a8a"}/>
                 <Text style={{color: "#000"}}>Comentarios sobre el producto: </Text>
                 <View>
                     {comments.map((element, index) => (

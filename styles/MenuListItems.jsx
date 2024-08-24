@@ -22,7 +22,8 @@ export const styles = StyleSheet.create({
         marginRight: 5
     },
     botonText:{
-        fontSize: 16
+        fontSize: 16,
+        color: "#FFF"
     }
 })
 
