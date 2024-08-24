@@ -12,9 +12,6 @@ export const styles = StyleSheet.create({
         backgroundColor: "#FFF",
         alignSelf: "space-between"
     },
-    containerItems: {
-        
-    },
     paymentContainer: {
         flexDirection: "row",
         gap: 20,

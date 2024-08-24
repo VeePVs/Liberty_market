@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: '#2a9df4',
     },
-    ofertasContainer: {
+    offersContainer: {
       flexDirection: 'column',
     },
-    ofertaItem: {
+    offerItem: {
       flexDirection: 'row',
       backgroundColor: '#fff',
       borderRadius: 10,
@@ -28,27 +28,27 @@ const styles = StyleSheet.create({
       shadowRadius: 5,
       elevation: 5,
     },
-    ofertaImage: {
+    offerImage: {
       width: 100,
       height: 100,
       borderRadius: 8,
     },
-    ofertaInfo: {
+    offerInfo: {
       marginLeft: 16,
       flex: 1,
       justifyContent: 'center',
     },
-    ofertaName: {
+    offerName: {
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 4,
     },
-    ofertaDescription: {
+    offerDescription: {
       fontSize: 14,
       color: '#666',
       marginBottom: 8,
     },
-    ofertaPrice: {
+    offerPrice: {
       fontSize: 16,
       fontWeight: 'bold',
       color: '#27ae60',

@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
         height: 60,
         flexDirection: "row",
     },
-    boton: {
+    button: {
         height: 40,
         backgroundColor: `${colors.secondary_color}`,
         justifyContent: "center",
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
         borderRadius: 18,
         marginRight: 5
     },
-    botonText:{
+    buttonText:{
         fontSize: 16,
         color: "#FFF"
     }

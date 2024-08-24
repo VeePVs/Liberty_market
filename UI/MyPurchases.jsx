@@ -5,7 +5,7 @@ import styles from '../styles/MyPurchasesStyle';
 
 const MyPurchases = () => {
 
-  const compras = [
+  const purchases = [
     {
       id: 1,
       image: 'https://i.pinimg.com/originals/90/b2/85/90b28579c0a2dce1146d299d6f235ad6.png',
@@ -59,17 +59,17 @@ const MyPurchases = () => {
 
   return (
     <ScrollView style={styles.container}>
-      {compras.map((compra) => (
-        <View key={compra.id} style={styles.item}>
+      {purchases.map((purchase) => (
+        <View key={purchase.id} style={styles.item}>
           <Image
-            source={{ uri: compra.image }}
+            source={{ uri: purchase.image }}
             style={styles.image}
           />
           <View style={styles.info}>
-            <Text style={styles.description}>{compra.description}</Text>
+            <Text style={styles.description}>{purchase.description}</Text>
             <View style={styles.statusContainer}>
-              {getStatusIcon(compra.status)}
-              <Text style={[styles.status, { marginLeft: 8 }]}>{compra.status}</Text>
+              {getStatusIcon(purchase.status)}
+              <Text style={[styles.status, { marginLeft: 8 }]}>{purchase.status}</Text>
             </View>
           </View>
         </View>

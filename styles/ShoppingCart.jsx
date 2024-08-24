@@ -11,9 +11,6 @@ export const styles = StyleSheet.create({
     container:{
         alignSelf: "space-between"
     },
-    containerItems: {
-        
-    },
     paymentContainer: {
         height: 100,
         backgroundColor: `${colors.primary_color}`,

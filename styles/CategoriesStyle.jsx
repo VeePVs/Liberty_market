@@ -12,12 +12,12 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       marginBottom: 16,
     },
-    categoriasContainer: {
+    categorieContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
     },
-    categoriaItem: {
+    categorieItem: {
       width: '48%',
       borderRadius: 8,
       padding: 12,
@@ -29,20 +29,20 @@ const styles = StyleSheet.create({
       shadowRadius: 8,
       elevation: 5,
     },
-    categoriaImage: {
+    categorieImage: {
       width: 80,
       height: 80,
       borderRadius: 8,
     },
-    categoriaName: {
+    categorieName: {
       marginTop: 8,
       fontSize: 16,
       fontWeight: 'bold',
     },
-    productosContainer: {
+    productContainer: {
       marginTop: 16,
     },
-    productoItem: {
+    productItem: {
       flexDirection: 'row',
       backgroundColor: '#ffffff',
       borderRadius: 8,
@@ -55,21 +55,21 @@ const styles = StyleSheet.create({
       shadowRadius: 8,
       elevation: 5,
     },
-    productoImage: {
+    productImage: {
       width: 80,
       height: 80,
       borderRadius: 8,
       marginRight: 16,
     },
-    productoInfo: {
+    productInfo: {
       flex: 1,
     },
-    productoName: {
+    productName: {
       fontSize: 16,
       fontWeight: 'bold',
       marginBottom: 4,
     },
-    productoDescription: {
+    productDescription: {
       fontSize: 14,
       color: '#666',
     },

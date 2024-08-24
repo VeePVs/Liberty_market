@@ -44,6 +44,7 @@ const Support = () => {
           value={description}
           onChangeText={setDescription}
           placeholder="Descripción (máximo 300 caracteres)"
+          placeholderTextColor={"#002"}
           multiline
           maxLength={300}
         />

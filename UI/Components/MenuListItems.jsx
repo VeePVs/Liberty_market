@@ -5,26 +5,26 @@ import styles from '../../styles/MenuListItems'
 export default function MenuListItems({navigation }) {
   return (
     <ScrollView style={styles.container} horizontal>
-        <Pressable style={styles.boton} onPress={() => navigation.navigate('ProfileScreen')}>
-            <Text style={styles.botonText}>Perfil</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('ProfileScreen')}>
+            <Text style={styles.buttonText}>Perfil</Text>
         </Pressable>
-        <Pressable style={styles.boton} onPress={() => navigation.navigate('Categories')}>
-            <Text style={styles.botonText}>Categorias</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('Categories')}>
+            <Text style={styles.buttonText}>Categorias</Text>
         </Pressable>
-        <Pressable style={styles.boton} onPress={() => navigation.navigate('Favorites')}>
-            <Text style={styles.botonText}>Favoritos</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('Favorites')}>
+            <Text style={styles.buttonText}>Favoritos</Text>
         </Pressable>
-        <Pressable style={styles.boton} onPress={() => navigation.navigate('MyPurchases')}>
-            <Text style={styles.botonText}>Mis compras</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('MyPurchases')}>
+            <Text style={styles.buttonText}>Mis compras</Text>
         </Pressable>
-        <Pressable style={styles.boton} onPress={() => navigation.navigate('Support')}>
-            <Text style={styles.botonText}>Soporte</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('Support')}>
+            <Text style={styles.buttonText}>Soporte</Text>
         </Pressable>
-        <Pressable style={styles.boton} onPress={() => navigation.navigate('Offers')}>
-            <Text style={styles.botonText}>Ofertas</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('Offers')}>
+            <Text style={styles.buttonText}>Ofertas</Text>
         </Pressable>
-        <Pressable style={styles.boton} onPress={() => navigation.navigate('ShoppingCart')}>
-            <Text style={styles.botonText}>Carrito</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('ShoppingCart')}>
+            <Text style={styles.buttonText}>Carrito</Text>
         </Pressable>
     </ScrollView>
   )

@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView, Pressable } from 'react-nati
 import styles from '../styles/CategoriesStyle';
 
 
-const CategoriasScreen = () => {
+const Categories = () => {
   const categories = [
     {
       id: 1,
@@ -59,8 +59,8 @@ const CategoriasScreen = () => {
 
   const [productsFiltered, setproductsFiltered] = useState(null);
 
-  const handleCategoriaSeleccionada = (categories) => {
-    setproductsFiltered(categories.products);
+  const handlecategoryselected = (category) => {
+    setproductsFiltered(category.products);
   };
 
   return (
@@ -68,18 +68,18 @@ const CategoriasScreen = () => {
       {!productsFiltered ? (
         <>
           <Text style={styles.title}>Categorías</Text>
-          <View style={styles.categoriasContainer}>
+          <View style={styles.categorieContainer}>
             {categories.map((categorie) => (
               <Pressable
                 key={categorie.id}
                 style={({ pressed }) => [
-                  styles.categoriaItem,
+                  styles.categorieItem,
                   { backgroundColor: pressed ? '#e0e0e0' : '#ffffff' },
                 ]}
-                onPress={() => handleCategoriaSeleccionada(categorie)}
+                onPress={() => handlecategoryselected(categorie)}
               >
-                <Image source={{ uri: categorie.image }} style={styles.categoriaImage} />
-                <Text style={styles.categoriaName}>{categorie.name}</Text>
+                <Image source={{ uri: categorie.image }} style={styles.categorieImage} />
+                <Text style={styles.categorieName}>{categorie.name}</Text>
               </Pressable>
             ))}
           </View>
@@ -93,13 +93,13 @@ const CategoriasScreen = () => {
           >
             <Text style={styles.backButtonText}>Volver a Categorías</Text>
           </Pressable>
-          <View style={styles.productosContainer}>
+          <View style={styles.productContainer}>
             {productsFiltered.map((product) => (
-              <View key={product.id} style={styles.productoItem}>
-                <Image source={{ uri: product.image }} style={styles.productoImage} />
-                <View style={styles.productoInfo}>
-                  <Text style={styles.productoName}>{product.name}</Text>
-                  <Text style={styles.productoDescription}>{product.description}</Text>
+              <View key={product.id} style={styles.productItem}>
+                <Image source={{ uri: product.image }} style={styles.productImage} />
+                <View style={styles.productInfo}>
+                  <Text style={styles.productName}>{product.name}</Text>
+                  <Text style={styles.productDescription}>{product.description}</Text>
                 </View>
               </View>
             ))}
@@ -112,4 +112,4 @@ const CategoriasScreen = () => {
 
 
 
-export default CategoriasScreen;
+export default Categories;

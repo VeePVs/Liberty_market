@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
+    color: "#003",
     marginBottom: 8,
   },
   buttonContainer: {
