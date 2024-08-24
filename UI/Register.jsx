@@ -26,7 +26,7 @@ export default function Register() {
   ];
 
   const validatePassword = (password) => {
-    const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{0,}$/;
+    const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{3,}$/;
     return regex.test(password);
   };
   
@@ -55,8 +55,8 @@ export default function Register() {
   };
 
   const handleRegister = () => {
-    if (password == '' || birthdate == '' || address == '' || selectedCity == '' || selectedDepartment == '' || user == '' || addressEmail == '') {
-      Alert.alert("Error", "Tienes campos vacios");
+    if (password == '' || birthdate == '' || birthdate.length != 10 || address == '' || selectedCity == '' || selectedDepartment == '' || user == '' || addressEmail == '') {
+      Alert.alert("Error", "Tienes campos vacios o incorrectos");
       return;
     }
     if (!validatePassword(password)) {
