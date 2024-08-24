@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
       padding: 16,
     },
     title: {
+      color: "#000",
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 16,
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
       borderRadius: 8,
     },
     categorieName: {
+      color: "#000",
       marginTop: 8,
       fontSize: 16,
       fontWeight: 'bold',
@@ -62,9 +64,11 @@ const styles = StyleSheet.create({
       marginRight: 16,
     },
     productInfo: {
+      color: "#000",
       flex: 1,
     },
     productName: {
+      color: "#000",
       fontSize: 16,
       fontWeight: 'bold',
       marginBottom: 4,

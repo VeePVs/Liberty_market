@@ -19,16 +19,19 @@ const styles = StyleSheet.create({
       borderRadius: 8,
     },
     infoContainer: {
+      color: "#000",
       flex: 1,
       justifyContent: 'center',
     },
     titleContainer: {
       flexDirection: 'row',
+      color: "#000",
       alignItems: 'center',
       marginBottom: 8,
     },
     description: {
       fontSize: 16,
+      color: "#000",
       marginLeft: 8,
     },
     cartIcon: {

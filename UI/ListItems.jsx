@@ -257,7 +257,7 @@ export default function ListItems({navigation}) {
   return (
         <SafeAreaView style={styles.containerListItems}>
             <MenuListItems navigation={navigation}/>
-            <TextInput style={styles.searchInput} placeholder='Buscar articulo' placeholderTextColor={"#000"}/>
+            <TextInput style={styles.searchInput} placeholder='Buscar articulo' placeholderTextColor={"#000"} maxLength={30}/>
             <FlatList 
                 data={items}
                 renderItem={({item}) => <Item name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} onPress={()=>{

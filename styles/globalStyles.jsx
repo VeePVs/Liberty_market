@@ -177,7 +177,8 @@ export const styles = StyleSheet.create({
         borderColor: "#000",
         borderWidth: 0.2,
         width: "80%",
-        borderRadius: 10
+        borderRadius: 10,
+        color: "#000"
     }
     
 })
