@@ -1,10 +1,12 @@
-import { View, Text, Image, FlatList } from 'react-native'
+import { View, Text, Image, FlatList, TextInput } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Item from './Components/Item';
 import styles from '../styles/globalStyles';
+import MenuListItems from './Components/MenuListItems';
 
 export default function ListItems({navigation}) {
+    
 
     const items =[
         {
@@ -254,6 +256,8 @@ export default function ListItems({navigation}) {
 
   return (
         <SafeAreaView style={styles.containerListItems}>
+            <MenuListItems navigation={navigation}/>
+            <TextInput style={styles.searchInput} placeholder='Buscar articulo' placeholderTextColor={"#000"}/>
             <FlatList 
                 data={items}
                 renderItem={({item}) => <Item name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} onPress={()=>{

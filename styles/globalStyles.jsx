@@ -172,6 +172,13 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 10
     },
+    searchInput: {
+        height: 40,
+        borderColor: "#000",
+        borderWidth: 0.2,
+        width: "80%",
+        borderRadius: 10
+    }
     
 })
 
