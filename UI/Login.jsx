@@ -45,8 +45,6 @@ const Login = ({navigation}) => {
                 <Text style={styles.textButton}>¿No tienes cuenta?</Text>
             </Pressable>
             <Pressable style={styles.registerButton} onPress={()=>{
-                console.log(user)
-                console.log(password)
                 passwordVerify(navigation, user, password)
             }}>
                 <Text style={styles.textButton}>Continuar</Text>

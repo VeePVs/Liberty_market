@@ -24,7 +24,6 @@ const ShoppingCart = ({navigation}) => {
     ]
 
     function detailItemFunction(obj) {
-        console.log("Sending object:", obj); 
         navigation.navigate('PaymentBranch', {items: obj})
     }
 

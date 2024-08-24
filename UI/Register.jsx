@@ -38,9 +38,6 @@ export default function Register() {
   const validateAge = (birthdate) => {
     const [day, month, year] = birthdate.split('/');
     const birthDateObj = new Date(year, month - 1, day);
-    
-    if (isNaN(birthDateObj.getTime())) {
-    }
   
     const today = new Date();
     let age = today.getFullYear() - birthDateObj.getFullYear();

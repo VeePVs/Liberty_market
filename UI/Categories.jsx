@@ -57,10 +57,10 @@ const Categories = () => {
     },
   ];
 
-  const [productsFiltered, setproductsFiltered] = useState(null);
+  const [productsFiltered, setProductsFiltered] = useState(null);
 
-  const handlecategoryselected = (category) => {
-    setproductsFiltered(category.products);
+  const handleCategorySelected = (category) => {
+    setProductsFiltered(category.products);
   };
 
   return (
@@ -76,7 +76,7 @@ const Categories = () => {
                   styles.categorieItem,
                   { backgroundColor: pressed ? '#e0e0e0' : '#ffffff' },
                 ]}
-                onPress={() => handlecategoryselected(categorie)}
+                onPress={() => handleCategorySelected(categorie)}
               >
                 <Image source={{ uri: categorie.image }} style={styles.categorieImage} />
                 <Text style={styles.categorieName}>{categorie.name}</Text>
@@ -89,7 +89,7 @@ const Categories = () => {
           <Text style={styles.title}>Productos</Text>
           <Pressable
             style={styles.backButton}
-            onPress={() => setproductsFiltered(null)}
+            onPress={() => setProductsFiltered(null)}
           >
             <Text style={styles.backButtonText}>Volver a Categorías</Text>
           </Pressable>
