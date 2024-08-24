@@ -32,7 +32,7 @@ const ShoppingCart = ({navigation}) => {
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.containerItems}>
                 {items.map((element, index) => (
-                    <ShopItem name={element.name} image={element.image} description={element.description} price={element.price}/>
+                    <ShopItem key={index} name={element.name} image={element.image} description={element.description} price={element.price}/>
                 ))}
                 <Text style={styles.textTotal}>Total a pagar: $1899998</Text>
             </ScrollView>

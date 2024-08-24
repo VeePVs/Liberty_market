@@ -9,7 +9,7 @@ const Support = () => {
   const handleSend = () => {
     Alert.alert(
       '¡Enviado!',
-      'Gracias por tu mensaje. si es una queja sobre el sistema lo solucionamos cuando aprendamos mas de react gracias :)',
+      'Gracias por tu mensaje. Si es una queja sobre el sistema lo solucionamos cuando aprendamos mas de react gracias :)',
       [{ text: 'OK' }]
     );
 

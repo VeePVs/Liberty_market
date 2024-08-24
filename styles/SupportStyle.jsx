@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   textArea: {
+    color: '#000',
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 4,

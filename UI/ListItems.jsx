@@ -260,7 +260,7 @@ export default function ListItems({navigation}) {
             <TextInput style={styles.searchInput} placeholder='Buscar articulo' placeholderTextColor={"#000"} maxLength={30}/>
             <FlatList 
                 data={items}
-                renderItem={({item}) => <Item name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} onPress={()=>{
+                renderItem={({item}) => <Item key={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} onPress={()=>{
                     detailItemFunction(item.id,item.price, item.name, item.description, item.image, item.features, item.questions, item.comments);
                 }}/>}
                 keyExtractor={item => item.id}
