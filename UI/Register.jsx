@@ -87,7 +87,7 @@ export default function Register() {
   return (
     <SafeAreaView style={styles.containerRegister}>
       
-        <Text style={styles.title}>Inicia con "Nombre app"</Text>
+        <Text style={styles.title}>Inicia con Liberty App</Text>
         <TextInput placeholder={"Crea un usuario"} maxLength={10} style={styles.input} placeholderTextColor={"#E1F7F5"} onChangeText={setUser}/>
         <PasswordInput placeholder={"Crea la contraseña"} maxLength={8} onChangeText={setPassword}/>
         <TextInput placeholder={"Ingresa tu correo electrónico"} style={styles.input} placeholderTextColor={"#E1F7F5"} onChangeText={setAddressEmail}/>
