@@ -34,7 +34,7 @@ const Login = ({navigation}) => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView className="flex-1 bg-purple-600 obj justify-center items-center" >
             <Icon name={'shopping-cart'} size={100} style={styles.iconLogin}/>
             <Text style={styles.title}>Bienvenido a Liberty Market</Text>
             <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={"#E1F7F1"}  maxLength={10} onChangeText={text => onChangeUser(text)}/>
