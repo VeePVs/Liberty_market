@@ -255,16 +255,18 @@ export default function ListItems({navigation}) {
     }
 
   return (
-        <SafeAreaView style={styles.containerListItems}>
+        <SafeAreaView style={styles.containerListItems} className="">
             <MenuListItems navigation={navigation}/>
             <TextInput style={styles.searchInput} placeholder='Buscar articulo' placeholderTextColor={"#000"} maxLength={30}/>
-            <FlatList 
-                data={items}
-                renderItem={({item}) => <Item key={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} onPress={()=>{
-                    detailItemFunction(item.id,item.price, item.name, item.description, item.image, item.features, item.questions, item.comments);
-                }}/>}
-                keyExtractor={item => item.id}
-            />
+            <View className="w-full grid gap-1 grid-cols-2">
+                <FlatList 
+                    data={items}
+                    renderItem={({item}) => <Item key={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} onPress={()=>{
+                        detailItemFunction(item.id,item.price, item.name, item.description, item.image, item.features, item.questions, item.comments);
+                    }}/>}
+                    keyExtractor={item => item.id}
+                />
+            </View>
         </SafeAreaView>
     )
 }

@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native'
 
     const colors = {
-        primary_color: "#243E8C",
+        primary_color: "#BF2EF0",
         secondary_color: "#3E34E0",
-        tertiary_color: "#A1E3CA",
+        tertiary_color: "#FFF6EA",
         quaternary_color: "#E1F7F5",
     }
 
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     containerItem: {
         borderWidth: 0.1,
         alignItems: "center",
-        width: 260,
+        width: 180,
         height: 340,
         marginTop: 15,
         shadowColor: '#000',

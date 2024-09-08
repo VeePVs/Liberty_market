@@ -6,9 +6,10 @@ import PasswordInput from './Components/PasswordInput';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-const Login = ({navigation}) => {
+const Login = ({navigation, route}) => {
     const [user, onChangeUser] = React.useState('');
     const [password, onChangePassword] = React.useState('');
+    const { setAuth } = route.params; 
 
     const users = [{
         username: 'Vee',
@@ -27,6 +28,7 @@ const Login = ({navigation}) => {
 
     function passwordVerify(navigation, user, password) {
         if (users.find(us => us.username == user) && users.find(us => us.password == password)) {
+            setAuth(true);
             navigation.navigate('ListItems')
         }else{
             createTwoButtonAlert("Usuario o clave invalidos, por valor intentar nuevamente.");
