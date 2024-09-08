@@ -257,7 +257,6 @@ export default function ListItems({navigation}) {
   return (
         <SafeAreaView style={styles.containerListItems} className="">
             <MenuListItems navigation={navigation}/>
-            <TextInput style={styles.searchInput} placeholder='Buscar articulo' placeholderTextColor={"#000"} maxLength={30}/>
             <View className="w-full grid gap-1 grid-cols-2">
                 <FlatList 
                     data={items}

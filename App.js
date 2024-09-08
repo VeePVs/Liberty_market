@@ -15,6 +15,7 @@ import Support from './UI/Support';
 import FavoritesScreen from './UI/Favorites';
 import Categories from './UI/Categories';
 import ProfileScreen from './UI/ProfileScreen';
+import SearchBar from './UI/Components/SearchBar.jsx';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,12 +40,28 @@ function AuthStack({setAuth}) {
   }
 
 function MyDrawer() {
+  const handleSearch = (query) => {
+    console.log('Buscando:', query);
+  };
     return (
       <Drawer.Navigator initialRouteName="HomeStack" screenOptions={{
+        headerTitle: () =>
+          <SearchBar />,
         drawerStyle: {
           backgroundColor: '#FFF6EA',
         },
-      }}>
+        headerStyle: {
+          backgroundColor: '#BF2EF0',
+        },
+        headerTitleContainerStyle: {
+          width: '70%'
+        },
+        headerTintColor: '#fff',  // Color del texto en el header
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+      }}
+      >
         <Drawer.Screen name="HomeStack" component={HomeStack} options={{ drawerLabel: 'Inicio', title: null }} />
         <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={{ title: 'Perfil' }} />
         <Drawer.Screen name="ShoppingCart" component={ShoppingCart} options={{ title: 'Carrito de compras' }} />
@@ -53,7 +70,7 @@ function MyDrawer() {
         <Drawer.Screen name="MyPurchases" component={MyPurchases} options={{ title: 'Mis compras' }} />
         <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ title: 'Favoritos' }} />
         <Drawer.Screen name="Support" component={Support} options={{ title: 'Soporte' }} />
-        </Drawer.Navigator>
+      </Drawer.Navigator>
     );
   }
 
