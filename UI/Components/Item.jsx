@@ -1,7 +1,6 @@
 import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
-import styles from '../../styles/globalStyles'
-import { Card } from 'react-native-paper'
+import styles from '../../styles/Item'
 
 
 export default function Item({name, description, price, image, questions, comments, onPress}) {
