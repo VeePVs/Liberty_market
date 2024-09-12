@@ -13,7 +13,7 @@ export default function ({placeholder,onChangeText}) {
                 <Icon name={visibleIcon== false ? 'eye-slash': 'eye'} size={30} style={styles.iconPassword} onPress={()=>{
                     setVisibleIcon(!visibleIcon);
                     setVisiblePassword(!visiblePassword);
-                }}/>
+                }}/> 
     </View>
   )
 }

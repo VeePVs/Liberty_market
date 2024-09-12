@@ -35,6 +35,7 @@ function AuthStack({setAuth}) {
       <Stack.Navigator initialRouteName='ListItems'>
         <Stack.Screen name="ListItems" component={ListItems} options={{ title: 'Lista de productos', headerShown:false }} />
         <Stack.Screen name="ItemDetail" component={ItemDetail} options={{ title: 'Detalle del producto' , headerBackVisible: false, headerShown:false}} />
+        <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ title: 'Carrito de compras' }} />
         <Stack.Screen name="PaymentBranch" component={PaymentBranch} options={{ title: 'Sucursal de pago' }} />
       </Stack.Navigator>
     );
@@ -65,7 +66,6 @@ function MyDrawer() {
       >
         <Drawer.Screen name="HomeStack" component={HomeStack} options={{ drawerLabel: 'Inicio', title: null }} />
         <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={{ title: 'Perfil', headerTitle: null }} />
-        <Drawer.Screen name="ShoppingCart" component={ShoppingCart} options={{ title: 'Carrito de compras' }} />
         <Drawer.Screen name="Offers" component={Offers} options={{ title: 'Ofertas' }} />
         <Drawer.Screen name="Categories" component={Categories} options={{ title: 'Categorías' }} />
         <Drawer.Screen name="MyPurchases" component={MyPurchases} options={{ title: 'Mis compras' }} />

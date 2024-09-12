@@ -12,6 +12,7 @@ export default function ListItems({navigation}) {
         {
             id: 1,
             price: 299999,
+            discount: 10,
             name: "Smartphone Samsung Galaxy A52",
             description: "Smartphone con pantalla de 6.5\", 128GB de almacenamiento y cámara de 64MP.",
             image: "https://m.media-amazon.com/images/I/418-u5vcIwL.jpg",
@@ -35,6 +36,7 @@ export default function ListItems({navigation}) {
         {
             id: 2,
             price: 1599999,
+            discount: 10,
             name: "Laptop Dell Inspiron 15 3000",
             description: "Laptop con procesador Intel Core i5, 8GB RAM, 256GB SSD.",
             image: "https://asyscomputadores.com/wp-content/uploads/2021/03/Portatil-Dell-Inspiron-15-3505.jpg",
@@ -58,6 +60,7 @@ export default function ListItems({navigation}) {
         {
             id: 3,
             price: 129999,
+            discount: 0,
             name: "Smartwatch Xiaomi Mi Band 6",
             description: "Pulsera inteligente con monitoreo de actividad física y frecuencia cardíaca.",
             image: "https://exitocol.vtexassets.com/arquivos/ids/10553535/smartband-xiaomi-mi-band-6-smartwatch-amoled-bt5-fitness-future.jpg?v=637703440171900000",
@@ -81,6 +84,7 @@ export default function ListItems({navigation}) {
         {
             id: 4,
             price: 79999,
+            discount: 15,
             name: "Auriculares Bluetooth Sony WH-CH510",
             description: "Auriculares inalámbricos con sonido de alta calidad y batería de larga duración.",
             image: "https://exitocol.vtexassets.com/arquivos/ids/16068870/audifonos-bluetooth-inalambricos-sony-wh-ch510-azul-con-funcion-manos-libres.jpg?v=638079481383170000",
@@ -104,6 +108,7 @@ export default function ListItems({navigation}) {
         {
             id: 5,
             price: 24999,
+            discount: 5,
             name: "Parlante Bluetooth JBL GO 2",
             description: "Parlante portátil con sonido de alta calidad y resistente al agua.",
             image: "https://http2.mlstatic.com/D_NQ_NP_741122-MLA46444282428_062021-O.webp",
@@ -127,6 +132,7 @@ export default function ListItems({navigation}) {
         {
             id: 6,
             price: 139999,
+            discount: 20,
             name: "Tablet Amazon Fire HD 8",
             description: "Tablet con pantalla HD de 8\", 32GB de almacenamiento y Alexa integrado.",
             image: "https://m.media-amazon.com/images/G/01/kindle/journeys/MGVhYmUyMjAt/MGVhYmUyMjAt-NjM4NmZlN2Et._CB658972813_.jpg",
@@ -150,6 +156,7 @@ export default function ListItems({navigation}) {
         {
             id: 7,
             price: 59999,
+            discount: 30,
             name: "Cámara de Seguridad Xiaomi Mi Home 360",
             description: "Cámara de seguridad con visión nocturna y detección de movimiento.",
             image: "https://conectamos.shop/wp-content/uploads/2022/06/xiaomi_mi_360_home_security_camera_2k_01_l.jpg",
@@ -173,6 +180,7 @@ export default function ListItems({navigation}) {
         {
             id: 8,
             price: 99999,
+            discount: 0,
             name: "Audífonos In-Ear Apple AirPods (2da Generación)",
             description: "Audífonos inalámbricos con chip H1 y estuche de carga.",
             image: "https://mac-center.com/cdn/shop/files/IMG-4814081_10baf2b7-1a80-4970-b191-34fb1f6f8821.jpg?v=1709568183&width=1445",
@@ -196,6 +204,7 @@ export default function ListItems({navigation}) {
         {
             id: 9,
             price: 179999,
+            discount: 0,
             name: 'Reloj Inteligente Fitbit Versa 2',
             description: 'Reloj inteligente con monitor de actividad, ritmo cardíaco y Alexa integrada.',
             image: "https://http2.mlstatic.com/D_NQ_NP_626839-MCO43656810937_102020-O.webp",
@@ -219,6 +228,7 @@ export default function ListItems({navigation}) {
         {
             id: 10,
             price: 44999,
+            discount: 0,
             name: 'Cargador Inalámbrico Samsung EP-P1300',
             description: 'Cargador inalámbrico rápido compatible con varios dispositivos.',
             image: "https://vasilperu.com/wp-content/uploads/2021/12/cargador-inalambrico-aaa.jpg",
@@ -241,7 +251,7 @@ export default function ListItems({navigation}) {
         }
     ];
     
-    function detailItemFunction(id ,price, name, description, image, features, questions, comments) {
+    function detailItemFunction(id ,price, name, description, image, features, questions, comments,discount) {
         navigation.navigate('ItemDetail', {
             id: id,
             price: price,
@@ -250,7 +260,8 @@ export default function ListItems({navigation}) {
             image: image,
             features: features,
             questions: questions,
-            comments: comments
+            comments: comments,
+            discount: discount
         })
     }
 
@@ -260,7 +271,7 @@ export default function ListItems({navigation}) {
             <View className="w-full grid gap-1 grid-cols-2">
                 <FlatList 
                     data={items}
-                    renderItem={({item}) => <Item key={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} onPress={()=>{
+                    renderItem={({item}) => <Item key={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} discount={item.discount} onPress={()=>{
                         detailItemFunction(item.id,item.price, item.name, item.description, item.image, item.features, item.questions, item.comments);
                     }}/>}
                     keyExtractor={item => item.id}

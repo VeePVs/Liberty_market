@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
     const colors = {
         primary_color: "#BF2EF0",
@@ -32,9 +33,18 @@ export const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
         objectFit: 'contain'
     },
+    nameItem: {
+        color: '#000',
+        fontSize: 18,
+        fontWeight: '600'
+    },
     textItem: {
         color: "#000",
-        fontWeight: "500",
+        fontWeight: "300",
+    },
+    price: {
+        fontSize:14,
+        color: '#a3a3a3'
     },
     containerItemDetail: {
         backgroundColor: "#FFF",
@@ -42,6 +52,22 @@ export const styles = StyleSheet.create({
         width: "auto",
         alignItems: "center",
     },
+    send: {
+        color: '#06b806'
+    },
+    containerPrice: {
+        gap: 5,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    priceText: {
+        color: '#000',
+        fontSize: 22
+    },
+    discount: {
+        color: '#06b806',
+        fontSize: 16
+    }
 })
 
 export default styles;
