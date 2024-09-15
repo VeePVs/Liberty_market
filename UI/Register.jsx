@@ -1,7 +1,7 @@
 import { View, Text,TextInput, Pressable, Alert } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import styles from '../styles/globalStyles'
+import styles from '../styles/Register'
 import PasswordInput from './Components/PasswordInput';
 import { SelectList } from 'react-native-dropdown-select-list'
 

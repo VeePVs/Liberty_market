@@ -10,22 +10,24 @@ import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors
 
 export const styles = StyleSheet.create({
     containerItem: {
-        borderWidth: 0.1,
+        borderWidth: 0.2,
         alignItems: "center",
         flexDirection: 'row',
         height: 200,
-        marginTop: 15,
         shadowOpacity: 0.1,
         shadowRadius: 4,
-        elevation:1,
         paddingTop:5,
-        paddingLeft: 5
+        paddingLeft: 5,
+        borderColor: "#a1a1a1",
+        borderRightWidth:0,
+        borderLeftWidth: 0
     },
     containerItemText: {
         width: 240,
         height: 160,
         padding: 10,
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        justifyContent: 'center'
     },
     imgItem: {
         width:160,
@@ -44,7 +46,8 @@ export const styles = StyleSheet.create({
     },
     price: {
         fontSize:14,
-        color: '#a3a3a3'
+        color: '#a3a3a3',
+        textDecorationLine: 'line-through',
     },
     containerItemDetail: {
         backgroundColor: "#FFF",

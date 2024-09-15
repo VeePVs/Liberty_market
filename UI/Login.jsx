@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Pressable, StatusBar, Text, TextInput, View, Alert} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {styles} from '../styles/globalStyles'
+import {styles} from '../styles/Login'
 import PasswordInput from './Components/PasswordInput';
 import Icon from 'react-native-vector-icons/FontAwesome';
 

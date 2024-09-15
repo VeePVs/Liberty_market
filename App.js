@@ -49,19 +49,24 @@ function MyDrawer() {
       <Drawer.Navigator initialRouteName="HomeStack" screenOptions={({ navigation }) => ({
         headerTitle: () => <SearchBar />,
         drawerStyle: {
-          backgroundColor: '#FFF6EA',
+          backgroundColor: '#292929',
         },
+        drawerLabelStyle: {
+          color: '#FFF',
+        },
+        drawerActiveBackgroundColor: '#243E8C'
+        ,
         headerStyle: {
-          backgroundColor: '#BF2EF0',
+          backgroundColor: '#243E8C',
         },
         headerTitleContainerStyle: {
           width: '70%',
         },
-        headerTintColor: '#fff', // Color del texto en el header
+        headerTintColor: '#fff', 
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-        headerRight: () => <CartIcon navigation={navigation} />, // Pasar 'navigation' a CartIcon
+        headerRight: () => <CartIcon navigation={navigation} />, 
       })}
       >
         <Drawer.Screen name="HomeStack" component={HomeStack} options={{ drawerLabel: 'Inicio', title: null }} />
