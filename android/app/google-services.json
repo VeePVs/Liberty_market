@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "872159996992",
+    "project_id": "liberty-market-78769",
+    "storage_bucket": "liberty-market-78769.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872159996992:android:2ee121aecaca4f52ff83a5",
+        "android_client_info": {
+          "package_name": "com.liberty_market"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhRlew-s_l8N-sqKlFiDmqiI27Sa2T9xs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

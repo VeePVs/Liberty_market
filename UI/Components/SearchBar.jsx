@@ -20,6 +20,7 @@ export default function SearchBar({ onSearch }) {
         placeholder="Buscar..."
         value={searchQuery}
         onChangeText={handleSearch}
+        onSubmitEditing={()=>{console.log("Enviado")}}
         maxLength={30}
       />
     );

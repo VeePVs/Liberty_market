@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from '../styles/Register'
 import PasswordInput from './Components/PasswordInput';
 import { SelectList } from 'react-native-dropdown-select-list'
-
+import firestore from '@react-native-firebase/firestore';
 
 export default function Register() {
   const [user, setUser] = React.useState('');
@@ -24,6 +24,25 @@ export default function Register() {
     { key: '5', value: 'Santander', capital: 'Bucaramanga', cities: ['Bucaramanga', 'Floridablanca', 'Girón', 'Piedecuesta', 'Barrancabermeja'] },
     { key: '6', value: 'Bolívar', capital: 'Cartagena', cities: ['Cartagena', 'Magangué', 'Turbaco', 'Arjona', 'Mompox'] }
   ];
+
+  const addUser = async () => {
+    try {
+      const querySnapshot = await firestore().collection('Users').add(
+        {
+          user: user,
+          password: password,
+          email: addressEmail,
+          birthdate: birthdate,
+          address: address,
+          deparment: selectedDepartment,
+          city: selectedCity
+        }
+      )
+        console.log("Agregado ")
+    } catch (error) {
+      console.error("Error al obtener los datos: ", error);
+    }
+  };
 
   const validatePassword = (password) => {
     const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{3,}$/;
@@ -74,8 +93,21 @@ export default function Register() {
       return;
     }
 
-    Alert.alert("Registro exitoso.");
+    
 
+    
+    /* const db = firebase.firestore();
+    firestore()
+      .collection('Users')
+      .add({
+        user: user,
+        password: password,
+        email: addressEmail,
+      })
+      */
+      addUser();
+    Alert.alert("Registro exitoso.");
+    
   };
 
   const handleDepartmentChange = (val) => {
