@@ -1,10 +1,11 @@
 import { View, Text,TextInput, Pressable, Alert } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import styles from '../styles/globalStyles'
+import styles from '../styles/Register'
 import PasswordInput from './Components/PasswordInput';
 import { SelectList } from 'react-native-dropdown-select-list'
-
+import firestore from '@react-native-firebase/firestore';
+import {createUser} from './Auth/fireAuth';
 
 export default function Register() {
   const [user, setUser] = React.useState('');
@@ -25,14 +26,11 @@ export default function Register() {
     { key: '6', value: 'Bolívar', capital: 'Cartagena', cities: ['Cartagena', 'Magangué', 'Turbaco', 'Arjona', 'Mompox'] }
   ];
 
+  
+
   const validatePassword = (password) => {
     const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{3,}$/;
     return regex.test(password);
-  };
-  
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
   };
 
   const validateAge = (birthdate) => {
@@ -64,18 +62,11 @@ export default function Register() {
       Alert.alert("Error", "La contraseña debe tener un máximo de 8 caracteres e incluir al menos 1 mayúscula, 1 carácter especial, letras y números.");
       return;
     }
-    if (!validateEmail(addressEmail)) {
-      Alert.alert("Error", "El formato del correo electrónico no es válido.");
-      return;
-    }
-
     if (!validateAge(birthdate)) {
       Alert.alert("Error", "No está en el rango de edad para crear la cuenta o el formato esta incorrecto.");
       return;
     }
-
-    Alert.alert("Registro exitoso.");
-
+    createUser(user, password, addressEmail, birthdate, address, selectedDepartment, selectedCity);
   };
 
   const handleDepartmentChange = (val) => {

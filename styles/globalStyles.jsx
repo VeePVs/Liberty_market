@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native'
 
     const colors = {
-        primary_color: "#243E8C",
+        primary_color: "#BF2EF0",
         secondary_color: "#3E34E0",
-        tertiary_color: "#A1E3CA",
+        tertiary_color: "#FFF6EA",
         quaternary_color: "#E1F7F5",
     }
 
@@ -26,40 +26,6 @@ export const styles = StyleSheet.create({
         width: "auto",
         alignItems:"center",
         padding: 12,
-    },
-    containerItem: {
-        borderWidth: 0.1,
-        alignItems: "center",
-        width: 260,
-        height: 340,
-        marginTop: 15,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation:1,
-        paddingTop:5
-    },
-    containerItemText: {
-        width: 240,
-        height: 160,
-        padding: 10,
-        alignItems: 'flex-start'
-    },
-    imgItem: {
-        width:160,
-        height:180,
-        borderBottomRightRadius: 10,
-    },
-    textItem: {
-        color: "#000",
-        fontWeight: "500",
-    },
-    containerItemDetail: {
-        backgroundColor: "#FFF",
-        flex: 1,
-        width: "auto",
-        alignItems: "center",
     },
     title: {
         color: `${colors.quaternary_color}`,
