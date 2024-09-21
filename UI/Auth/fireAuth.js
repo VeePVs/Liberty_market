@@ -1,5 +1,5 @@
 import auth from '@react-native-firebase/auth';
-import { Alert } from 'react-native'
+import { Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
 async function createUser(user,password,addressEmail,birthdate,address,selectedDepartment,selectedCity) {
@@ -9,15 +9,15 @@ async function createUser(user,password,addressEmail,birthdate,address,selectedD
         .then(userCredential => {
             const uid = userCredential.user.uid;
             return firestore()
-                .collection('Users')  
-                .doc(uid)             
+                .collection('Users')
+                .doc(uid)
                 .set({
                     username: user.toLowerCase(),
                     birthdate: birthdate,
                     address: address,
                     department: selectedDepartment,
                     city: selectedCity,
-                    email: addressEmail
+                    email: addressEmail,
                 });
         })
         .then(() => {
@@ -30,13 +30,12 @@ async function createUser(user,password,addressEmail,birthdate,address,selectedD
             if (error.code === 'auth/invalid-email') {
                 return Alert.alert('ERROR','El correo es invalido.');
             }
-                console.error(error); 
+                console.error(error);
             }
-        )
+        );
     }else{
         return Alert.alert('ERROR','Usuario ya existente.');
     }
-    
 }
 
 async function verifyUser(user) {
@@ -44,12 +43,12 @@ async function verifyUser(user) {
         const querySnapshot = await firestore()
         .collection('Users')
         .where('username', '==', user)
-        .get()
-        
+        .get();
+
         if (!querySnapshot.empty) {
-            return true; 
+            return true;
         } else {
-            return false; 
+            return false;
         }
     } catch (error) {
         console.error('Error:', error);
