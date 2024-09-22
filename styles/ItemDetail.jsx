@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     },
     descriptionItem: {
         color: '#000',
-        fontSize: 20,
+        fontSize: 24,
     },
     containerQC: {
         padding: 15,
@@ -54,6 +54,29 @@ export const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#FFF',
         zIndex:10,
+    },
+    containerItemDetail: {
+        width:'100%',
+        alignContent: 'center',
+    },
+    containerPrice: {
+        gap: 5,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    priceText: {
+        color: '#000',
+        fontSize: 24,
+        fontWeight: '500',
+    },
+    discount: {
+        color: '#06b806',
+        fontSize: 16,
+    },
+    price: {
+        fontSize:14,
+        color: '#a3a3a3',
+        textDecorationLine: 'line-through',
     },
 });
 
