@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, Pressable } from 'react-native';
+import { View, Text, Image, ScrollView, Pressable } from 'react-native';
 import styles from '../styles/CategoriesStyle';
 
 

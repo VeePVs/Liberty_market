@@ -32,7 +32,7 @@ function AuthStack({setAuth}) {
 
   function HomeStack() {
     return (
-      <Stack.Navigator initialRouteName='ListItems'>
+      <Stack.Navigator initialRouteName="ListItems">
         <Stack.Screen name="ListItems" component={ListItems} options={{ title: 'Lista de productos', headerShown:false }} />
         <Stack.Screen name="ItemDetail" component={ItemDetail} options={{ title: 'Detalle del producto' , headerBackVisible: false, headerShown:false}} />
         <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ title: 'Carrito de compras' }} />
@@ -62,11 +62,11 @@ function MyDrawer() {
         headerTitleContainerStyle: {
           width: '70%',
         },
-        headerTintColor: '#fff', 
+        headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-        headerRight: () => <CartIcon navigation={navigation} />, 
+        headerRight: () => <CartIcon navigation={navigation} />
       })}
       >
         <Drawer.Screen name="HomeStack" component={HomeStack} options={{ drawerLabel: 'Inicio', title: null }} />
