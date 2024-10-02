@@ -1,5 +1,5 @@
 import { View, Text,ScrollView,TextInput, Pressable, Image, Linking, Alert } from 'react-native'
-import React, {useCallback} from 'react';
+import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PaymentItem from './Components/PaymentItem'
 import styles from '../styles/PaymentBranch'

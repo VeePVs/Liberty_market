@@ -40,15 +40,15 @@ const Login = ({navigation, route}) => {
             <Text style={styles.title}>Bienvenido a Liberty Market</Text>
             <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={'#E1F7F1'}  maxLength={10} onChangeText={text => onChangeUser(text)}/>
             <PasswordInput placeholder={'Ingresa la contraseña'} onChangeText={text => onChangePassword(text)}/>
-            <Pressable style={styles.generalButton} onPress={()=>{
-                navigation.navigate('Register');
-            }}>
-                <Text style={styles.textButton}>¿No tienes cuenta?</Text>
-            </Pressable>
             <Pressable style={styles.registerButton} onPress={()=>{
                 passwordVerify(navigation, user, password);
             }}>
                 <Text style={styles.textButton}>Continuar</Text>
+            </Pressable>
+            <Pressable style={styles.generalButton} onPress={()=>{
+                navigation.navigate('Register');
+            }}>
+                <Text style={styles.textButton}>¿No tienes cuenta?</Text>
             </Pressable>
         </SafeAreaView>
     );

@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, Pressable } from 'react-native'
+import { Pressable } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
