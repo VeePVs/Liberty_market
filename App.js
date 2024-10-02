@@ -17,6 +17,7 @@ import Categories from './UI/Categories';
 import ProfileScreen from './UI/ProfileScreen';
 import SearchBar from './UI/Components/SearchBar.jsx';
 import CartIcon from './UI/Components/CartIcon.jsx';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -69,13 +70,33 @@ function MyDrawer() {
         headerRight: () => <CartIcon navigation={navigation} />
       })}
       >
-        <Drawer.Screen name="HomeStack" component={HomeStack} options={{ drawerLabel: 'Inicio', title: null }} />
-        <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={{ title: 'Perfil', headerTitle: null }} />
-        <Drawer.Screen name="Offers" component={Offers} options={{ title: 'Ofertas' }} />
-        <Drawer.Screen name="Categories" component={Categories} options={{ title: 'Categorías' }} />
-        <Drawer.Screen name="MyPurchases" component={MyPurchases} options={{ title: 'Mis compras' }} />
-        <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ title: 'Favoritos' }} />
-        <Drawer.Screen name="Support" component={Support} options={{ title: 'Soporte', headerTitle: null }} />
+        <Drawer.Screen name="HomeStack" component={HomeStack} options={{ drawerIcon: ({ size }) => (
+        <Icon name="home" size={size} color="blue" />),
+        drawerLabel: 'Inicio', title: null }} />
+
+        <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={{ drawerIcon: ({ size }) => (
+        <Icon name="account-circle" size={size} color={"blue"} />),
+        title: 'Perfil', headerTitle: null }} />
+
+        <Drawer.Screen name="Offers" component={Offers} options={{ drawerIcon: ({ size }) => (
+        <Icon name="local-offer" size={size} color={"blue"} />),
+        title: 'Ofertas' }} />
+
+        <Drawer.Screen name="Categories" component={Categories} options={{ drawerIcon: ({ size }) => (
+        <Icon name="category" size={size} color={"blue"} />), 
+        title: 'Categorías' }} />
+
+        <Drawer.Screen name="MyPurchases" component={MyPurchases} options={{ drawerIcon: ({ size }) => (
+        <Icon name="shopping-cart" size={size} color={"blue"} />),
+        title: 'Mis compras' }} />
+
+        <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ size }) => (
+        <Icon name="favorite" size={size} color={"blue"} />),
+        title: 'Favoritos' }} />
+
+        <Drawer.Screen name="Support" component={Support} options={{ drawerIcon: ({ size }) => (
+        <Icon name="support-agent" size={size} color={"blue"} />), 
+        title: 'Soporte', headerTitle: null }} />
       </Drawer.Navigator>
     );
   }
