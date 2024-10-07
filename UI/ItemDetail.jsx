@@ -1,13 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text,TextInput, ScrollView } from 'react-native';
-import React, {useReducer} from 'react';
+import React, {useContext, useReducer} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/ItemDetail';
 import Stars from './Components/Stars';
 import Animated from 'react-native-reanimated';
 import HeartIcon from './Components/Heart';
-import { useItems } from './context/ItemContext';
 import BuyButton from './Components/BuyButton';
+import {ItemsContext} from './context/ItemContext';
+
 const initialState = {
     rating: 0,
 };
@@ -28,6 +29,7 @@ function numFormat(num) {
 
 export default function ItemDetail({route}) {
     const {id, name, price, description, features, image, questions, comments, favorite, discount} = route.params;
+    const { addItem, items} = useContext(ItemsContext);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
@@ -59,7 +61,10 @@ export default function ItemDetail({route}) {
                             </Text>
                         ))}
                     </View>
-                    <BuyButton />
+                    <BuyButton onPress={()=>{
+                        addItem({id,name,price,image,discount});
+                        console.log(items)
+                    }}/>
                 </View>
                 <View  style={styles.containerQC}>
                     <Text style={styles.questionsComments}>¿Tienes una pregunta del articulo?</Text>

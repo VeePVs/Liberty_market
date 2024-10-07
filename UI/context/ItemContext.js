@@ -1,10 +1,10 @@
 import React, { createContext, useReducer, useContext } from 'react';
 import { itemsReducer, initialState } from './ItemReducer';
 
-const ItemsContext = createContext();
+export const ItemsContext = createContext();
 
 export const ItemsProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(itemsReducer, initialState);
+  const [items, dispatch] = useReducer(itemsReducer, []);
 
   const addItem = (item) => {
     dispatch({ type: 'ADD_ITEM', payload: item });
@@ -15,13 +15,8 @@ export const ItemsProvider = ({ children }) => {
   };
 
   return (
-    <ItemsContext.Provider value={{ items: state, addItem, removeItem }}>
+    <ItemsContext.Provider value={{ items, addItem, removeItem }}>
       {children}
     </ItemsContext.Provider>
   );
-};
-
-export const useItems = () => {
-  const context = useContext(ItemsContext);
-  return context;
 };

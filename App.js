@@ -105,15 +105,15 @@ function MyDrawer() {
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
     return(
+      <ItemsProvider>
         <NavigationContainer>
             {isAuthenticated ? (
                 <MyDrawer />
             ) : (
-              <ItemsProvider>
                 <AuthStack setAuth={setIsAuthenticated}/>
-              </ItemsProvider>
             )}
         </NavigationContainer>
+      </ItemsProvider>
     )
 };
 
