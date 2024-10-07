@@ -18,6 +18,7 @@ import ProfileScreen from './UI/ProfileScreen';
 import SearchBar from './UI/Components/SearchBar.jsx';
 import CartIcon from './UI/Components/CartIcon.jsx';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { ItemsProvider } from './UI/context/ItemContext.js';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -108,7 +109,9 @@ const App = () => {
             {isAuthenticated ? (
                 <MyDrawer />
             ) : (
+              <ItemsProvider>
                 <AuthStack setAuth={setIsAuthenticated}/>
+              </ItemsProvider>
             )}
         </NavigationContainer>
     )

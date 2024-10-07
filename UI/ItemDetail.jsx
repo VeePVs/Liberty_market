@@ -6,7 +6,8 @@ import styles from '../styles/ItemDetail';
 import Stars from './Components/Stars';
 import Animated from 'react-native-reanimated';
 import HeartIcon from './Components/Heart';
-
+import { useItems } from './context/ItemContext';
+import BuyButton from './Components/BuyButton';
 const initialState = {
     rating: 0,
 };
@@ -25,7 +26,7 @@ function numFormat(num) {
     return array.join(',');
   }
 
-export default function ItemDetail({route, navigation}) {
+export default function ItemDetail({route}) {
     const {id, name, price, description, features, image, questions, comments, favorite, discount} = route.params;
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -58,6 +59,7 @@ export default function ItemDetail({route, navigation}) {
                             </Text>
                         ))}
                     </View>
+                    <BuyButton />
                 </View>
                 <View  style={styles.containerQC}>
                     <Text style={styles.questionsComments}>¿Tienes una pregunta del articulo?</Text>
