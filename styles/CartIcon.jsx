@@ -11,6 +11,19 @@ export const styles = StyleSheet.create({
     cartIcon: {
         paddingRight: 15,
         color: '#FFF'
+    },
+    items: {
+        borderRadius:20,
+        backgroundColor: '#E63946',
+        width: 20,
+        height:20,
+        position: 'absolute',
+        right: 5,
+        top:-5,
+        zIndex:10,
+    },
+    textItems: {
+        textAlign: 'center',
     }
 })
 

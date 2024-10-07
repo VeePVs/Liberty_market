@@ -29,7 +29,7 @@ function numFormat(num) {
 
 export default function ItemDetail({route}) {
     const {id, name, price, description, features, image, questions, comments, favorite, discount} = route.params;
-    const { addItem, items} = useContext(ItemsContext);
+    const { addItem } = useContext(ItemsContext);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
@@ -63,7 +63,6 @@ export default function ItemDetail({route}) {
                     </View>
                     <BuyButton onPress={()=>{
                         addItem({id,name,price,image,discount});
-                        console.log(items)
                     }}/>
                 </View>
                 <View  style={styles.containerQC}>
