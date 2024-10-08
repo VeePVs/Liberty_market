@@ -1,6 +1,7 @@
 import { View, Text, Image, Button } from 'react-native'
 import React, {useContext} from 'react'
 import {ItemsContext} from '../context/ItemContext';
+import styles from '../../styles/ShopItem';
 
 export default function ShopItem({id,name, image, description, price, discount, count}) {
     const {updateCount, updateSubtraction} = useContext(ItemsContext);
@@ -23,9 +24,12 @@ export default function ShopItem({id,name, image, description, price, discount, 
     <View style={{flexDirection: "row", alignItems: "center", backgroundColor: "#FFF", margin: 5, height: 150}}>
         <Image source={{uri: `${image}`, width: 60, height: 60}}/>
         <View style={{width: "auto", paddingLeft: 20}}>
-            <Text style={{color:"#000", fontWeight: "600"}}>{name}</Text>
+            <Text style={styles.name}>{name}</Text>
             <Text style={{color:"#000", width: '60%'}}>{description}</Text>
-            <Text style={{color:"#000"}}>${numFormat(printPrice(price, discount))}</Text>
+            <View style={styles.containerPrices}>
+                <Text style={styles.totalPrice}>${numFormat(printPrice(price, discount)*count)}</Text>
+                <Text style={styles.everyPrice}>c/u ${numFormat(printPrice(price, discount))}</Text>
+            </View>
             <View style={{flexDirection: "row", gap: 10}}>
                 <Button color={"#243E8C"} title='-' onPress={()=>{
                     (count!= 0) ?  updateSubtraction(id) : 0

@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
@@ -19,6 +19,7 @@ import SearchBar from './UI/Components/SearchBar.jsx';
 import CartIcon from './UI/Components/CartIcon.jsx';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ItemsProvider } from './UI/context/ItemContext.js';
+import { items } from './UI/database/items.js';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -32,10 +33,12 @@ function AuthStack({setAuth}) {
     );
   }
 
-  function HomeStack() {
+  function HomeStack({ filteredItems, handleSearch, setFilteredItems }) {
     return (
       <Stack.Navigator initialRouteName="ListItems">
-        <Stack.Screen name="ListItems" component={ListItems} options={{ title: 'Lista de productos', headerShown:false }} />
+        <Stack.Screen name="ListItems" options={{ title: 'Lista de productos', headerShown:false }}>
+          {props => <ListItems {...props} filteredItems={filteredItems} setFilteredItems={setFilteredItems} options={{ title: 'Lista de productos', headerShown:false }}/>}
+        </Stack.Screen>
         <Stack.Screen name="ItemDetail" component={ItemDetail} options={{ title: 'Detalle del producto' , headerBackVisible: false, headerShown:false}} />
         <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ title: 'Carrito de compras' }} />
         <Stack.Screen name="PaymentBranch" component={PaymentBranch} options={{ title: 'Sucursal de pago' }} />
@@ -43,13 +46,10 @@ function AuthStack({setAuth}) {
     );
   }
 
-function MyDrawer() {
-  const handleSearch = (query) => {
-    console.log('Buscando:', query);
-  };
+function MyDrawer({ filteredItems, handleSearch, setFilteredItems }) {
     return (
       <Drawer.Navigator initialRouteName="HomeStack" screenOptions={({ navigation }) => ({
-        headerTitle: () => <SearchBar />,
+        headerTitle: () => <SearchBar onSearch={handleSearch}/>,
         drawerStyle: {
           backgroundColor: '#292929',
         },
@@ -71,9 +71,11 @@ function MyDrawer() {
         headerRight: () => <CartIcon navigation={navigation} />
       })}
       >
-        <Drawer.Screen name="HomeStack" component={HomeStack} options={{ drawerIcon: ({ size }) => (
-        <Icon name="home" size={size} color="blue" />),
-        drawerLabel: 'Inicio', title: null }} />
+        <Drawer.Screen name="HomeStack" options={{ drawerIcon: ({ size }) => (
+          <Icon name="home" size={size} color="blue" />),
+          drawerLabel: 'Inicio', title: null }}>
+          {props => <HomeStack {...props} filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems}/>}
+        </Drawer.Screen>
 
         <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={{ drawerIcon: ({ size }) => (
         <Icon name="account-circle" size={size} color={"blue"} />),
@@ -103,12 +105,28 @@ function MyDrawer() {
   }
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredItems, setFilteredItems] = useState(items);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    if (query) {
+      const filtered = items.filter(item => 
+        item.name.toLowerCase().includes(query.toLowerCase()) ||
+        item.description.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredItems(filtered);
+    } else {
+      setFilteredItems(items);
+    }
+  };
+
     return(
       <ItemsProvider>
         <NavigationContainer>
             {isAuthenticated ? (
-                <MyDrawer />
+                <MyDrawer filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems}/>
             ) : (
                 <AuthStack setAuth={setIsAuthenticated}/>
             )}

@@ -17,9 +17,9 @@ const ShoppingCart = ({navigation}) => {
         
         items.map((item)=>{
             if (item.discount != 0) {
-                total = total + ((item.price - item.price * (item.discount * 0.01)));
+                total = total + ((item.price - item.price * (item.discount * 0.01))) * item.count;
             }else{
-                total = total + (item.price);
+                total = total + (item.price) * item.count;
             }
         })
         return total;
@@ -31,13 +31,13 @@ const ShoppingCart = ({navigation}) => {
         return array.join(',');
       }
 
-      useEffect(() => {
+    useEffect(() => {
         items.forEach((item) => {
           if (item.count === 0) {
             removeItem(item.id);
           }
         });
-      }, [items, removeItem]);
+    }, [items, removeItem]);
 
   return (
         <SafeAreaView style={styles.container}>
@@ -48,7 +48,7 @@ const ShoppingCart = ({navigation}) => {
             />
             <View style={styles.paymentContainer}>
                 <Text>Total a pagar: ${numFormat(calculateCheck())}</Text>
-                <Pressable style={styles.paymentButton} onPress={()=>{
+                <Pressable style={styles.paymentButton} disabled={items.length == 0 ? true : false}  onPress={()=>{
                     detailItemFunction(items);
                 }}>
                     <Text style={styles.textPaymentButton}>Proceder con el pago</Text>

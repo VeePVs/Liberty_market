@@ -104,7 +104,7 @@ export default function ItemDetail({route}) {
                             ))
                         }
                     </View>
-                    <TextInput style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} multiline placeholder="Escribe una opinión sincera, deja tu comentario." placeholderTextColor={"#8a8a8a"}/>
+                    <TextInput style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} editable={state.rating!==0 ? true : false} multiline placeholder="Escribe una opinión sincera, deja tu comentario. (recuerda primero calificar)" placeholderTextColor={"#8a8a8a"}/>
                     <Text style={{color: '#000'}}>Comentarios sobre el producto: </Text>
                     <View>
                         {comments.map((element, index) => (

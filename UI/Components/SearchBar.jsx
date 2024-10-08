@@ -1,27 +1,25 @@
-import React from "react";
-import {TextInput} from 'react-native'
-import styles from "../../styles/SearchBar";
-
+import React, { useState } from 'react';
+import { TextInput } from 'react-native';
+import styles from '../../styles/SearchBar';
 
 export default function SearchBar({ onSearch }) {
-    const [searchQuery, setSearchQuery] = React.useState('');
-  
+    const [searchQuery, setSearchQuery] = useState('');
+
     const handleSearch = (text) => {
-      setSearchQuery(text);
-      if (onSearch) {
-        onSearch(text);
-      }
+        setSearchQuery(text);
+        if (onSearch) {
+            onSearch(text);
+        }
     };
-  
+
     return (
-      <TextInput
-        style={styles.searchInput}
-        placeholderTextColor={"#000"}
-        placeholder="Buscar..."
-        value={searchQuery}
-        onChangeText={handleSearch}
-        onSubmitEditing={()=>{console.log("Enviado")}}
-        maxLength={30}
-      />
+        <TextInput
+            style={styles.searchInput}
+            placeholder="Buscar..."
+            placeholderTextColor="#000"
+            value={searchQuery}
+            onChangeText={handleSearch}
+            maxLength={30}
+        />
     );
-  }
+}

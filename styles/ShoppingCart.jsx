@@ -9,10 +9,12 @@ import {StyleSheet} from 'react-native'
 
 export const styles = StyleSheet.create({
     container:{
-        alignSelf: "space-between"
+        flex: 1,
+        width: '100%',
     },
     paymentContainer: {
         height: 100,
+        width: '100%',
         backgroundColor: `${colors.primary_color}`,
         alignItems: 'center',
         justifyContent: "center"
