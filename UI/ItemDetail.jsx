@@ -29,8 +29,17 @@ function numFormat(num) {
 
 export default function ItemDetail({route}) {
     const {id, name, price, description, features, image, questions, comments, favorite, discount} = route.params;
-    const { addItem } = useContext(ItemsContext);
+    const { addItem, items, updateCount } = useContext(ItemsContext);
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    function findItem(items, id) {
+        return items.some((item) => {
+            if (parseInt(item.id) === parseInt(id)) {
+                return true;
+            }
+            return false;
+        });
+    }
 
     return (
         <SafeAreaView>
@@ -62,7 +71,11 @@ export default function ItemDetail({route}) {
                         ))}
                     </View>
                     <BuyButton onPress={()=>{
-                        addItem({id,name,price,image,discount, description});
+                        if (!findItem(items, id)) {
+                            addItem({id,name,price,image,discount, description, count: 1});
+                        }else{
+                            updateCount(id);
+                        }
                     }}/>
                 </View>
                 <View  style={styles.containerQC}>

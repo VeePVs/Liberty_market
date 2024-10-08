@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from 'react';
-import { itemsReducer, initialState } from './ItemReducer';
+import { itemsReducer } from './ItemReducer';
 
 export const ItemsContext = createContext();
 
@@ -14,8 +14,16 @@ export const ItemsProvider = ({ children }) => {
     dispatch({ type: 'REMOVE_ITEM', payload: id });
   };
 
+  const updateCount = (id) => {
+    dispatch({type: 'UPDATE_COUNT', payload: {id}});
+  };
+  
+  const updateSubtraction = (id) => {
+    dispatch({type: 'UPDATE_SUBTRACTION', payload: {id}});
+  };
+
   return (
-    <ItemsContext.Provider value={{ items, addItem, removeItem }}>
+    <ItemsContext.Provider value={{ items, addItem, removeItem, updateCount, updateSubtraction }}>
       {children}
     </ItemsContext.Provider>
   );
