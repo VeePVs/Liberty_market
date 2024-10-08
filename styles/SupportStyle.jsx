@@ -3,15 +3,17 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 20,
+    backgroundColor: '#f9f9f9',
   },
   fieldContainer: {
-    marginBottom: 16,
+    marginBottom: 20,
   },
   label: {
-    fontSize: 16,
-    color: "#003",
-    marginBottom: 8,
+    fontSize: 18,
+    color: "#005",
+    marginBottom: 10,
+    fontWeight: 'bold',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -19,27 +21,30 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    marginHorizontal: 4,
-    padding: 12,
-    borderRadius: 4,
-    backgroundColor: '#ddd',
+    marginHorizontal: 6,
+    paddingVertical: 14,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    backgroundColor: '#e0e0e0',
     alignItems: 'center',
   },
   buttonSelected: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#0056b3',
   },
   buttonText: {
-    color: '#fff',
+    color: '#ffffff',
     fontSize: 16,
+    fontWeight: '600',
   },
   textArea: {
-    color: '#000',
+    color: '#333',
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    padding: 8,
+    borderColor: '#aaa',
+    borderRadius: 8,
+    padding: 12,
     fontSize: 16,
-    height: 100,
+    height: 120,
+    backgroundColor: '#fff',
   },
 });
 
