@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
+import OfferItem from './Components/OfferItem';
 import styles from '../styles/OffersStyle';
 
 const Offers = () => {
@@ -46,33 +47,16 @@ const Offers = () => {
     },
   ];
 
-  const calculateDiscountedPrice = (price, discount) => {
-    return price - (price * (discount / 100));
-  };
-
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Ofertas Especiales</Text>
       <View style={styles.offersContainer}>
         {offers.map((offer) => (
-          <View key={offer.id} style={styles.offerItem}>
-            <Image source={{ uri: offer.image }} style={styles.offerImage} />
-            <View style={styles.offerInfo}>
-              <Text style={styles.offerName}>{offer.name}</Text>
-              <Text style={styles.offerDescription}>{offer.description}</Text>
-              <Text style={styles.offerPrice}>
-                Precio: ${calculateDiscountedPrice(offer.price, offer.discount).toFixed(2)}
-              </Text>
-              <Text style={styles.originalPrice}>Antes: ${offer.price.toFixed(2)}</Text>
-              <Text style={styles.discountLabel}>-{offer.discount}% OFF</Text>
-            </View>
-          </View>
+          <OfferItem key={offer.id} offer={offer} />
         ))}
       </View>
     </ScrollView>
   );
 };
-
-
 
 export default Offers;
