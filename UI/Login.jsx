@@ -4,7 +4,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from '../styles/Login';
 import PasswordInput from './Components/PasswordInput';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import Header from '../src/svg/ssspill.svg'
 
 const Login = ({navigation, route}) => {
     const [user, onChangeUser] = React.useState('');
@@ -35,7 +35,7 @@ const Login = ({navigation, route}) => {
     }
 
     return (
-        <SafeAreaView className="flex-1 bg-purple-600 obj justify-center items-center" >
+        <SafeAreaView className="flex-1 obj justify-center items-center" style={styles.container}>
             <Icon name={'shopping-cart'} size={100} style={styles.iconLogin}/>
             <Text style={styles.title}>Bienvenido a Liberty Market</Text>
             <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={'#E1F7F1'}  maxLength={10} onChangeText={text => onChangeUser(text)}/>
@@ -48,7 +48,7 @@ const Login = ({navigation, route}) => {
             <Pressable style={styles.generalButton} onPress={()=>{
                 navigation.navigate('Register');
             }}>
-                <Text style={styles.textButton}>¿No tienes cuenta?</Text>
+                <Text style={styles.textButtonRegister}>¿No tienes cuenta?</Text>
             </Pressable>
         </SafeAreaView>
     );

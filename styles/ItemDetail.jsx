@@ -62,19 +62,18 @@ export const styles = StyleSheet.create({
     containerPrice: {
         gap: 5,
         flexDirection: 'row',
-        justifyContent: 'center',
     },
     priceText: {
         color: '#000',
-        fontSize: 24,
+        fontSize: 36,
         fontWeight: '500',
     },
     discount: {
         color: '#06b806',
-        fontSize: 16,
+        fontSize: 22,
     },
     price: {
-        fontSize:14,
+        fontSize:18,
         color: '#a3a3a3',
         textDecorationLine: 'line-through',
     },

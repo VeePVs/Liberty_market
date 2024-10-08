@@ -41,11 +41,11 @@ export default function ItemDetail({route}) {
                 </View>
                     <Text style={styles.nameItem}>{name}</Text>
                 <View style={styles.detailsItems}>
-                    <View style={styles.containerPrice}>
                         {discount != 0 ?
                             (<Text style={styles.price}>${numFormat(price)}</Text>)
                             : (<></>)
                         }
+                    <View style={styles.containerPrice}>
                         <Text style={styles.priceText}>${discount != 0 ? numFormat((price - price * (discount * 0.01))) : numFormat(price)}</Text>
                         {discount != 0 ?
                             (<Text style={styles.discount}>{discount}% OFF</Text>)
@@ -62,7 +62,7 @@ export default function ItemDetail({route}) {
                         ))}
                     </View>
                     <BuyButton onPress={()=>{
-                        addItem({id,name,price,image,discount});
+                        addItem({id,name,price,image,discount, description});
                     }}/>
                 </View>
                 <View  style={styles.containerQC}>

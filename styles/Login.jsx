@@ -3,11 +3,14 @@ import {StyleSheet} from 'react-native'
     const colors = {
         primary_color: "#BF2EF0",
         secondary_color: "#3E34E0",
-        tertiary_color: "#FFF6EA",
-        quaternary_color: "#E1F7F5",
+        tertiary_color: "#050050",
+        quaternary_color: "#FFFFFF",
     }
 
 export const styles = StyleSheet.create({
+    container:{
+        backgroundColor: '#243E8C',
+    },
     iconLogin: {
         color:`${colors.quaternary_color}`
     },
@@ -36,7 +39,12 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+    },
+    textButtonRegister: {
+        color: '#fff',
+        fontWeight: '800',
+        fontSize: 16
     },
     textButton: {
         fontSize: 18,
@@ -49,7 +57,8 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+        
     },
     
 })
