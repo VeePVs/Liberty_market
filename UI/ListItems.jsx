@@ -1,4 +1,4 @@
-import { View, FlatList } from 'react-native';
+import { View, FlatList, ScrollView } from 'react-native';
 import React , {useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Item from './Components/Item';
@@ -29,15 +29,21 @@ export default function ListItems({navigation, filteredItems, setFilteredItems})
 
   return (
         <SafeAreaView style={styles.containerListItems} className="">
-            <View className="w-full grid gap-1 grid-cols-2">
-                <FlatList
+            <ScrollView className="w-full grid gap-1 grid-cols-2">
+                {filteredItems.map((item)=>(
+                    <Item key={item.id} id={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} discount={item.discount} onPress={()=>{
+                        detailItemFunction(item.id,item.price, item.name, item.description, item.favorite, item.image, item.features, item.questions, item.comments, item.discount);
+                    }}/>
+                ))}
+
+                {/* <FlatList
                     data={filteredItems}
                     renderItem={({item}) => <Item key={item.id} id={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} discount={item.discount} onPress={()=>{
                         detailItemFunction(item.id,item.price, item.name, item.description, item.favorite, item.image, item.features, item.questions, item.comments, item.discount);
                     }}/>}
                     keyExtractor={item => item.id}
-                />
-            </View>
+                /> */}
+            </ScrollView>
         </SafeAreaView>
     );
 }
