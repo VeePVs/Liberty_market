@@ -28,7 +28,6 @@ const Login = ({navigation, route}) => {
     function passwordVerify(navigation, user, password) {
         if (users.find(us => us.username == user) && users.find(us => us.password == password)) {
             setAuth(true);
-            navigation.navigate('ListItems');
         }else{
             createTwoButtonAlert('Usuario o clave invalidos, por valor intentar nuevamente.');
         }
