@@ -20,6 +20,7 @@ import CartIcon from './UI/Components/CartIcon.jsx';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ItemsProvider } from './UI/context/ItemContext.js';
 import { items } from './UI/database/items.js';
+import { UserProvider } from './UI/context/UserContext.js';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -125,15 +126,17 @@ const App = () => {
   };
 
     return(
-      <ItemsProvider>
-        <NavigationContainer>
-            {isAuthenticated ? (
-                <MyDrawer filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems}/>
-            ) : (
-                <AuthStack setAuth={setIsAuthenticated}/>
-            )}
-        </NavigationContainer>
-      </ItemsProvider>
+      <UserProvider setAuth={setIsAuthenticated}>
+        <ItemsProvider>
+          <NavigationContainer>
+              {isAuthenticated ? (
+                  <MyDrawer filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems}/>
+              ) : (
+                  <AuthStack/>
+              )}
+          </NavigationContainer>
+        </ItemsProvider>
+      </UserProvider>
     )
 };
 

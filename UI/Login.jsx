@@ -1,36 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Pressable, Text, TextInput, Alert} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from '../styles/Login';
 import PasswordInput from './Components/PasswordInput';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Header from '../src/svg/ssspill.svg'
+import {UserContext} from './context/UserContext.js';
 
 const Login = ({navigation, setAuth}) => {
     const [user, onChangeUser] = React.useState('');
     const [password, onChangePassword] = React.useState('');
-
-    const users = [{
-        username: 'Vee',
-        password: 'Vee123%',
-    }];
-
-    const createTwoButtonAlert = (props) =>
-        Alert.alert('Registro no valido', props, [
-          {
-            text: 'Cancelar',
-            onPress: () => console.log('Continuar'),
-            style: 'cancel',
-          },
-        ]);
-
-    function passwordVerify(navigation, user, password) {
-        if (users.find(us => us.username == user) && users.find(us => us.password == password)) {
-            setAuth(true);
-        }else{
-            createTwoButtonAlert('Usuario o clave invalidos, por valor intentar nuevamente.');
-        }
-    }
+    const {verifyCredencials} = useContext(UserContext);
 
     return (
         <SafeAreaView className="flex-1 obj justify-center items-center" style={styles.container}>
@@ -39,7 +19,7 @@ const Login = ({navigation, setAuth}) => {
             <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={'#E1F7F1'}  maxLength={10} onChangeText={text => onChangeUser(text)}/>
             <PasswordInput placeholder={'Ingresa la contraseña'} onChangeText={text => onChangePassword(text)}/>
             <Pressable style={styles.registerButton} onPress={()=>{
-                passwordVerify(navigation, user, password);
+                verifyCredencials(user, password, setAuth);
             }}>
                 <Text style={styles.textButton}>Continuar</Text>
             </Pressable>
