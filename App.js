@@ -27,7 +27,9 @@ const Drawer = createDrawerNavigator();
 function AuthStack({setAuth}) {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} options={{ title: 'Inicio de sesión' }} initialParams={{setAuth}} />
+        <Stack.Screen name="Login" options={{ title: 'Inicio de sesión' }}>
+          {props => <Login {...props} setAuth={setAuth}/>}
+        </Stack.Screen>
         <Stack.Screen name="Register" component={Register} options={{ title: 'Registro de usuarios' }} />
       </Stack.Navigator>
     );
@@ -72,33 +74,33 @@ function MyDrawer({ filteredItems, handleSearch, setFilteredItems }) {
       })}
       >
         <Drawer.Screen name="HomeStack" options={{ drawerIcon: ({ size }) => (
-          <Icon name="home" size={size} color="blue" />),
+          <Icon name="home" size={size} color="#5DADEC" />),
           drawerLabel: 'Inicio', title: null }}>
           {props => <HomeStack {...props} filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems}/>}
         </Drawer.Screen>
 
         <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={{ drawerIcon: ({ size }) => (
-        <Icon name="account-circle" size={size} color={"blue"} />),
+        <Icon name="account-circle" size={size} color={"#5DADEC"} />),
         title: 'Perfil', headerTitle: null }} />
 
         <Drawer.Screen name="Offers" component={Offers} options={{ drawerIcon: ({ size }) => (
-        <Icon name="local-offer" size={size} color={"blue"} />),
+        <Icon name="local-offer" size={size} color={"#5DADEC"} />),
         title: 'Ofertas' }} />
 
         <Drawer.Screen name="Categories" component={Categories} options={{ drawerIcon: ({ size }) => (
-        <Icon name="category" size={size} color={"blue"} />), 
+        <Icon name="category" size={size} color={"#5DADEC"} />), 
         title: 'Categorías' }} />
 
         <Drawer.Screen name="MyPurchases" component={MyPurchases} options={{ drawerIcon: ({ size }) => (
-        <Icon name="shopping-cart" size={size} color={"blue"} />),
+        <Icon name="shopping-cart" size={size} color={"#5DADEC"} />),
         title: 'Mis compras' }} />
 
         <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ size }) => (
-        <Icon name="favorite" size={size} color={"blue"} />),
+        <Icon name="favorite" size={size} color={"#5DADEC"} />),
         title: 'Favoritos' }} />
 
         <Drawer.Screen name="Support" component={Support} options={{ drawerIcon: ({ size }) => (
-        <Icon name="support-agent" size={size} color={"blue"} />), 
+        <Icon name="support-agent" size={size} color={"#5DADEC"} />), 
         title: 'Soporte', headerTitle: null }} />
       </Drawer.Navigator>
     );

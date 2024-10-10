@@ -6,10 +6,9 @@ import PasswordInput from './Components/PasswordInput';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Header from '../src/svg/ssspill.svg'
 
-const Login = ({navigation, route}) => {
+const Login = ({navigation, setAuth}) => {
     const [user, onChangeUser] = React.useState('');
     const [password, onChangePassword] = React.useState('');
-    const { setAuth } = route.params;
 
     const users = [{
         username: 'Vee',

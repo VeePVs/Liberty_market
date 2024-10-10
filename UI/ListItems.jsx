@@ -35,14 +35,6 @@ export default function ListItems({navigation, filteredItems, setFilteredItems})
                         detailItemFunction(item.id,item.price, item.name, item.description, item.favorite, item.image, item.features, item.questions, item.comments, item.discount);
                     }}/>
                 ))}
-
-                {/* <FlatList
-                    data={filteredItems}
-                    renderItem={({item}) => <Item key={item.id} id={item.id} name={item.name} description={item.description} price={item.price} image={item.image} questions={item.questions} comments={item.comments} discount={item.discount} onPress={()=>{
-                        detailItemFunction(item.id,item.price, item.name, item.description, item.favorite, item.image, item.features, item.questions, item.comments, item.discount);
-                    }}/>}
-                    keyExtractor={item => item.id}
-                /> */}
             </ScrollView>
         </SafeAreaView>
     );
