@@ -1,10 +1,11 @@
 import {Text,TextInput, Pressable, Alert } from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/Register';
 import PasswordInput from './Components/PasswordInput';
 import { SelectList } from 'react-native-dropdown-select-list';
 import {createUser} from './Auth/fireAuth';
+import {UserContext} from './context/UserContext.js';
 
 export default function Register() {
   const [user, setUser] = React.useState('');
@@ -15,6 +16,8 @@ export default function Register() {
   const [selectedDepartment, setSelectedDepartment] = React.useState('');
   const [selectedCity, setSelectedCity] = React.useState('');
   const [Cities, setCities] = React.useState([]);
+  const {addUser} = useContext(UserContext);
+
 
   const colombia = [
     { key: '1', value: 'Antioquia', capital: 'Medellín', cities: ['Medellín', 'Bello', 'Itagüí', 'Envigado', 'Apartadó'] },
@@ -63,7 +66,17 @@ export default function Register() {
       Alert.alert('Error', 'No está en el rango de edad para crear la cuenta o el formato esta incorrecto.');
       return;
     }
-    createUser(user, password, addressEmail, birthdate, address, selectedDepartment, selectedCity);
+
+    const newUser = {
+      user,
+      password,
+      addressEmail,
+      birthdate,
+      address,
+      selectedDepartment,
+      selectedCity,
+    };
+    createUser(newUser);
   };
 
   const handleDepartmentChange = (val) => {

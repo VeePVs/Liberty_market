@@ -118,6 +118,20 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
   },
+  logout: {
+    alignSelf: 'center',
+    backgroundColor: "#FFF",
+    width: 200,
+    margin: 30,
+    padding:10,
+    borderRadius: 10,
+  },
+  logoutText: {
+    color: '#243E8C',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });
 
 export default styles;

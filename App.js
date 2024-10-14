@@ -1,8 +1,9 @@
 import 'react-native-gesture-handler';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 import Login from './UI/Login';
 import Register from './UI/Register';
 import ListItems from './UI/ListItems';
@@ -49,7 +50,7 @@ function AuthStack({setAuth}) {
     );
   }
 
-function MyDrawer({ filteredItems, handleSearch, setFilteredItems }) {
+function MyDrawer({ filteredItems, handleSearch, setFilteredItems, onSignOut }) {
     return (
       <Drawer.Navigator initialRouteName="HomeStack" screenOptions={({ navigation }) => ({
         headerTitle: () => <SearchBar onSearch={handleSearch}/>,
@@ -80,9 +81,11 @@ function MyDrawer({ filteredItems, handleSearch, setFilteredItems }) {
           {props => <HomeStack {...props} filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems}/>}
         </Drawer.Screen>
 
-        <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={{ drawerIcon: ({ size }) => (
-        <Icon name="account-circle" size={size} color={"#5DADEC"} />),
-        title: 'Perfil', headerTitle: null }} />
+        <Drawer.Screen name="ProfileScreen" options={{ drawerIcon: ({ size }) => (
+          <Icon name="account-circle" size={size} color={"#5DADEC"} />),
+          title: 'Perfil', headerTitle: null }}>
+          {props => <ProfileScreen {...props} onSignOut={onSignOut}/>}
+        </Drawer.Screen>
 
         <Drawer.Screen name="Offers" component={Offers} options={{ drawerIcon: ({ size }) => (
         <Icon name="local-offer" size={size} color={"#5DADEC"} />),
@@ -110,6 +113,7 @@ function MyDrawer({ filteredItems, handleSearch, setFilteredItems }) {
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [initializing, setInitializing] = useState(true);
   const [filteredItems, setFilteredItems] = useState(items);
 
   const handleSearch = (query) => {
@@ -125,12 +129,34 @@ const App = () => {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+        await auth().signOut();  
+        setIsAuthenticated(false);  
+    } catch (error) {
+        console.error('Error al cerrar sesión: ', error);
+    }
+  };
+
+    useEffect(() => {
+      const subscriber = auth().onAuthStateChanged((user) => {
+          if (user) {
+              setIsAuthenticated(true);
+          } else {
+              setIsAuthenticated(false);
+          }
+          if (initializing) setInitializing(false);
+      });
+
+      return subscriber; 
+    }, [initializing,setIsAuthenticated]);
+
     return(
       <UserProvider setAuth={setIsAuthenticated}>
         <ItemsProvider>
           <NavigationContainer>
               {isAuthenticated ? (
-                  <MyDrawer filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems}/>
+                  <MyDrawer filteredItems={filteredItems} handleSearch={handleSearch} setFilteredItems={setFilteredItems} onSignOut={handleSignOut}/>
               ) : (
                   <AuthStack/>
               )}

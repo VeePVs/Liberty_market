@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { View, Modal, TextInput, Button, ScrollView, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Modal, TextInput, Button, ScrollView, Text, Pressable } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import ProfileHeader from './Components/ProfileHeader'; 
 import CardList from './Components/CardList';
 import styles from '../styles/ProfileStyle'; 
 
-const ProfileScreen = () => {
+const ProfileScreen = ({onSignOut}) => {
   const [profileImage, setProfileImage] = useState('https://avatars.githubusercontent.com/u/87825150?v=4');
   const [cards, setCards] = useState(['Visa **** **** **** 1234']);
   const [modalVisible, setModalVisible] = useState(false);
@@ -47,6 +47,7 @@ const ProfileScreen = () => {
         <CardList cards={cards} />
         
         <Button title="Agregar tarjeta" onPress={() => setModalVisible(true)} style={styles.addCardButton} />
+
       </ScrollView>
 
       <Modal
@@ -71,6 +72,9 @@ const ProfileScreen = () => {
           </View>
         </View>
       </Modal>
+      <Pressable style={styles.logout} onPress={onSignOut}>
+        <Text style={styles.logoutText}>Cerrar sesión</Text>
+      </Pressable>
     </View>
   );
 };
