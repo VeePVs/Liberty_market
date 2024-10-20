@@ -5,7 +5,7 @@ export const items = [
         discount: 10,
         name: 'Smartphone Samsung Galaxy A52',
         description: 'Smartphone con pantalla de 6.5", 128GB de almacenamiento y cámara de 64MP.',
-        favorite: 0,
+        favorite: [],
         image: 'https://m.media-amazon.com/images/I/418-u5vcIwL.jpg',
         features: [
             'Pantalla Super AMOLED de 6.5 pulgadas',
@@ -30,7 +30,7 @@ export const items = [
         discount: 10,
         name: 'Laptop Dell Inspiron 15 3000',
         description: 'Laptop con procesador Intel Core i5, 8GB RAM, 256GB SSD.',
-        favorite: 0,
+        favorite: [],
         image: 'https://asyscomputadores.com/wp-content/uploads/2021/03/Portatil-Dell-Inspiron-15-3505.jpg',
         features: [
             'Pantalla Full HD de 15.6 pulgadas',
@@ -55,7 +55,7 @@ export const items = [
         discount: 0,
         name: 'Smartwatch Xiaomi Mi Band 6',
         description: 'Pulsera inteligente con monitoreo de actividad física y frecuencia cardíaca.',
-        favorite: 0,
+        favorite: [],
         image: 'https://exitocol.vtexassets.com/arquivos/ids/10553535/smartband-xiaomi-mi-band-6-smartwatch-amoled-bt5-fitness-future.jpg?v=637703440171900000',
         features: [
             'Pantalla AMOLED de 1.56 pulgadas',
@@ -80,7 +80,7 @@ export const items = [
         discount: 15,
         name: 'Auriculares Bluetooth Sony WH-CH510',
         description: 'Auriculares inalámbricos con sonido de alta calidad y batería de larga duración.',
-        favorite: 0,
+        favorite: [],
         image: 'https://exitocol.vtexassets.com/arquivos/ids/16068870/audifonos-bluetooth-inalambricos-sony-wh-ch510-azul-con-funcion-manos-libres.jpg?v=638079481383170000',
         features: [
             'Conectividad Bluetooth 5.0',
@@ -105,7 +105,7 @@ export const items = [
         discount: 5,
         name: 'Parlante Bluetooth JBL GO 2',
         description: 'Parlante portátil con sonido de alta calidad y resistente al agua.',
-        favorite: 0,
+        favorite: [],
         image: 'https://http2.mlstatic.com/D_NQ_NP_741122-MLA46444282428_062021-O.webp',
         features: [
             'Sonido JBL Signature',
@@ -130,7 +130,7 @@ export const items = [
         discount: 20,
         name: 'Tablet Amazon Fire HD 8',
         description: 'Tablet con pantalla HD de 8", 32GB de almacenamiento y Alexa integrado.',
-        favorite: 0,
+        favorite: [],
         image: 'https://m.media-amazon.com/images/G/01/kindle/journeys/MGVhYmUyMjAt/MGVhYmUyMjAt-NjM4NmZlN2Et._CB658972813_.jpg',
         features: [
             'Pantalla HD de 8 pulgadas',
@@ -155,7 +155,7 @@ export const items = [
         discount: 30,
         name: 'Cámara de Seguridad Xiaomi Mi Home 360',
         description: 'Cámara de seguridad con visión nocturna y detección de movimiento.',
-        favorite: 0,
+        favorite: [],
         image: 'https://conectamos.shop/wp-content/uploads/2022/06/xiaomi_mi_360_home_security_camera_2k_01_l.jpg',
         features: [
             'Resolución Full HD 1080p',
@@ -180,7 +180,7 @@ export const items = [
         discount: 0,
         name: 'Audífonos In-Ear Apple AirPods (2da Generación)',
         description: 'Audífonos inalámbricos con chip H1 y estuche de carga.',
-        favorite: 0,
+        favorite: [],
         image: 'https://mac-center.com/cdn/shop/files/IMG-4814081_10baf2b7-1a80-4970-b191-34fb1f6f8821.jpg?v=1709568183&width=1445',
         features: [
             'Chip H1 para mejor conectividad',
@@ -205,7 +205,7 @@ export const items = [
         discount: 0,
         name: 'Reloj Inteligente Fitbit Versa 2',
         description: 'Reloj inteligente con monitor de actividad, ritmo cardíaco y Alexa integrada.',
-        favorite: 1,
+        favorite: [],
         image: 'https://http2.mlstatic.com/D_NQ_NP_626839-MCO43656810937_102020-O.webp',
         features: [
             'Pantalla AMOLED',
@@ -230,7 +230,7 @@ export const items = [
         discount: 0,
         name: 'Cargador Inalámbrico Samsung EP-P1300',
         description: 'Cargador inalámbrico rápido compatible con varios dispositivos.',
-        favorite: 0,
+        favorite: [],
         image: 'https://vasilperu.com/wp-content/uploads/2021/12/cargador-inalambrico-aaa.jpg',
         features: [
             'Carga rápida de hasta 9W',

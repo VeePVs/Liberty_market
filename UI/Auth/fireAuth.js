@@ -1,6 +1,8 @@
 import auth from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
+import { items } from '../database/items';
 
 async function createUser(newUser) {
     if( await verifyUser(newUser.user)){

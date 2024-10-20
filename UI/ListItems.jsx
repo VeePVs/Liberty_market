@@ -22,9 +22,7 @@ export default function ListItems({navigation, filteredItems, setFilteredItems})
     }
 
     useEffect(() => {
-        console.log(filteredItems)
         setFilteredItems(filteredItems)
-        console.log(filteredItems)
     }, [filteredItems, setFilteredItems]); 
 
   return (

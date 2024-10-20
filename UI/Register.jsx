@@ -27,7 +27,6 @@ export default function Register() {
     if (date.length == 5) {
       date = date + '/'
     }
-
     setBirthdate(date)
   }
 

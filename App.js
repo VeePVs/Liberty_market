@@ -22,6 +22,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ItemsProvider } from './UI/context/ItemContext.js';
 import { items } from './UI/database/items.js';
 import { UserProvider } from './UI/context/UserContext.js';
+import { getItems } from './UI/database/firestore.js';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -114,7 +115,8 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [initializing, setInitializing] = useState(true);
-  const [filteredItems, setFilteredItems] = useState(items);
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -128,6 +130,11 @@ const App = () => {
       setFilteredItems(items);
     }
   };
+
+  useEffect(() => {
+    const unsubscribe = getItems(setItems, setFilteredItems);
+    return () => unsubscribe(); 
+  }, []);
 
   const handleSignOut = async () => {
     try {
