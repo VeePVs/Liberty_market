@@ -18,6 +18,18 @@ export default function Register() {
   const [Cities, setCities] = React.useState([]);
   const {addUser} = useContext(UserContext);
 
+  function valideDate(text) {
+    let date = text
+
+    if(date.length == 2){
+      date = date + '/'
+    }
+    if (date.length == 5) {
+      date = date + '/'
+    }
+
+    setBirthdate(date)
+  }
 
   const colombia = [
     { key: '1', value: 'Antioquia', capital: 'Medellín', cities: ['Medellín', 'Bello', 'Itagüí', 'Envigado', 'Apartadó'] },
@@ -96,7 +108,8 @@ export default function Register() {
           maxLength={10}
           style={styles.input}
           placeholderTextColor={'#E1F7F5'}
-          onChangeText={setBirthdate}
+          value={birthdate}
+          onChangeText={text => valideDate(text)}
         />
         <TextInput
           placeholder={'Dirección'}
