@@ -5,11 +5,12 @@ import {styles} from '../styles/Login';
 import PasswordInput from './Components/PasswordInput';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {verifyLogin} from './Auth/fireAuth';
-import {UserContext} from './context/UserContext.js';
+import { UserContext } from './context/UserContext';
 
-const Login = ({navigation, setAuth}) => {
+const Login = ({navigation}) => {
     const [user, onChangeUser] = React.useState('');
     const [password, onChangePassword] = React.useState('');
+    const { setUserUID } = useContext(UserContext);
 
     return (
         <SafeAreaView className="flex-1 obj justify-center items-center" style={styles.container}>
@@ -18,7 +19,14 @@ const Login = ({navigation, setAuth}) => {
             <TextInput placeholder="Ingresa el usuario" style={styles.input} placeholderTextColor={'#E1F7F1'}  maxLength={10} onChangeText={text => onChangeUser(text)}/>
             <PasswordInput placeholder={'Ingresa la contraseña'} onChangeText={text => onChangePassword(text)}/>
             <Pressable style={styles.registerButton} onPress={async ()=>{
-                await verifyLogin(user, password);
+                const uid = await verifyLogin(user, password);
+                if (uid) {
+                    setUserUID(uid);
+                    console.log(uid)
+                    Alert.alert('Login exitoso', 'Bienvenido');
+                } else {
+                    Alert.alert('Error', 'No se pudo iniciar sesión');
+                }
             }}>
                 <Text style={styles.textButton}>Continuar</Text>
             </Pressable>

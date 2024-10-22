@@ -1,8 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-import { doc, setDoc } from 'firebase/firestore';
-import { items } from '../database/items';
 
 async function createUser(newUser) {
     if( await verifyUser(newUser.user)){
@@ -64,8 +62,9 @@ async function verifyLogin(user, password) {
         .where('username', '==', user.toLowerCase())
         .get();
         if (!querySnapshot.empty) {
-            auth().signInWithEmailAndPassword(querySnapshot.docs[0]._data.email, password);
-            return true;
+            const email = querySnapshot.docs[0]._data.email;
+            const userCredential = await auth().signInWithEmailAndPassword(email, password);
+            return userCredential.user.uid;
         }else{
             Alert.alert('Error', 'Contraseña o usuarios incorrectos.');
         }
