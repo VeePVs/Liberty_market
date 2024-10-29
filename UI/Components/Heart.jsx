@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Pressable} from 'react-native';
 import styles from '../../styles/HeartIcon';
@@ -11,7 +11,7 @@ import Animated, {
     withSequence,
   } from 'react-native-reanimated';
 
-export default function HeartIcon({isOn, onPress}){ 
+export default function HeartIcon({isOn, getHeart}){ 
     const [fullHeart, setFullHeart] = useState(0);
     const rotation = useSharedValue(0);
     const ANGLE = 20;
@@ -21,6 +21,7 @@ export default function HeartIcon({isOn, onPress}){
     const animatedStyle = useAnimatedStyle(() => ({
         transform: [{ rotateX: `${rotation.value}deg` }],
       }));
+      
 
     const handlePress = () => {
         rotation.value = withSequence(
@@ -40,10 +41,11 @@ export default function HeartIcon({isOn, onPress}){
     return (
         <Pressable onPress={()=>{
             handlePress();
+            isOn();
             setFullHeart(fullHeart == 0 ? 1 : 0);
         }}>
             <Animated.View style={[animatedStyle]}>
-                <Icon name={fullHeart === 0 ? 'heart-o' : 'heart'} size={35} style={styles.HeartIcon}/>
+                <Icon name={getHeart == 0 ? 'heart-o' : 'heart'} size={35} style={styles.HeartIcon}/>
             </Animated.View>
         </Pressable>
     );

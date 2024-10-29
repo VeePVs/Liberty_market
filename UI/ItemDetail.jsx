@@ -8,7 +8,9 @@ import Animated from 'react-native-reanimated';
 import HeartIcon from './Components/Heart';
 import BuyButton from './Components/BuyButton';
 import {ItemsContext} from './context/ItemContext';
-import { getItem } from './database/firestore';
+import { UserContext } from './context/UserContext';
+import { deleteHeart, getItem, setHeart, getHeart } from './database/firestore';
+
 
 const initialState = {
     rating: 0,
@@ -31,13 +33,20 @@ function numFormat(num) {
 export default function ItemDetail({route}) {
     const {id, name, price, description, features, image, questions, comments, favorite, discount} = route.params;
     const { addItem, items, updateCount } = useContext(ItemsContext);
+    const {userUID} = useContext(UserContext);
     const [state, dispatch] = useReducer(reducer, initialState);
     const [article, setArticle] = useState({})
+    const [isFavorite, setIsFavorite] = useState(0);
 
     useEffect(() => {
         const unsubscribe = getItem(id,setArticle);
         return () => unsubscribe;
       }, [id]);
+
+
+    useEffect(() => {
+    getHeart(id, userUID, setIsFavorite);
+    }, [id, userUID]);
 
     function findItem(items, id) {
         return items.some((item) => {
@@ -46,6 +55,27 @@ export default function ItemDetail({route}) {
             }
             return false;
         });
+    }
+
+    async function printHeart(product) {
+        const article = await product;
+        console.log(article)
+        if (article.favorite.length == 0) {
+            setHeart(product.id, userUID)
+            console.log('10')
+            return 1;
+        } 
+        article.favorite.map(favorite => {
+            if (favorite == userUID) {
+                deleteHeart(product.id, userUID)
+                console.log('0')
+                return 0;
+            } else{
+                setHeart(product.id, userUID)
+                console.log('1')
+                return 1;
+            }
+        })
     }
 
     return (
@@ -57,7 +87,10 @@ export default function ItemDetail({route}) {
                 ) : (
                     <Text>Imagen no disponible</Text>
                 )}
-                    <HeartIcon isOn={favorite}/>
+                    <HeartIcon 
+                        isOn={() => { printHeart(article); }}
+                        getHeart={isFavorite}
+                        />
                 </View>
                     <Text style={styles.nameItem}>{article.name}</Text>
                 <View style={styles.detailsItems}>
@@ -75,7 +108,7 @@ export default function ItemDetail({route}) {
                     <Text style={styles.descriptionItem}>{article.description}</Text>
                     <Text style={{ color: '#000' }}>Se aceptan pagos por PSE, Efecty y tarjetas de crédito</Text>
                     <View>
-                        {article.features.map((element, index) => (
+                        {features.map((element, index) => (
                             <Text key={index} style={{ color: '#000' }}>
                                 * {element}
                             </Text>
@@ -94,7 +127,7 @@ export default function ItemDetail({route}) {
                     <TextInput style={styles.inputQuestionsComments} maxLength={100}  numberOfLines={4} multiline placeholder="Haz tu mejor pregunta." placeholderTextColor={'#8a8a8a'}/>
                     <Text style={{color: '#000'}}>Preguntas ya realizadas: </Text>
                     <View>
-                        {article.questions.map((element, index) => (
+                        {questions.map((element, index) => (
                             <Text key={index} style={{color: '#000'}}>
                                 *{element}
                             </Text>
@@ -118,7 +151,7 @@ export default function ItemDetail({route}) {
                     <TextInput style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} editable={state.rating!==0 ? true : false} multiline placeholder="Escribe una opinión sincera, deja tu comentario. (recuerda primero calificar)" placeholderTextColor={"#8a8a8a"}/>
                     <Text style={{color: '#000'}}>Comentarios sobre el producto: </Text>
                     <View>
-                        {article.comments.map((element, index) => (
+                        {comments.map((element, index) => (
                             <Text key={index} style={{color: '#000'}}>
                                 *{element}
                             </Text>
