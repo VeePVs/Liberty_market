@@ -11,7 +11,6 @@ const getItems = (setItems, setFilteredItems) => {
       setItems(itemsFromFirebase); 
       setFilteredItems(itemsFromFirebase);
     }, (error) => {
-      console.error('Error al obtener los items de Firebase: ', error);
     });
     return unsubscribe;
 };
@@ -36,7 +35,7 @@ const getHeart = (id_product, userUID, setFavoriteStatus) => {
       if (snapshot.exists) {
         const favorites = snapshot.data().favorite || [];
         const isFavorite = favorites.includes(userUID);
-        setFavoriteStatus(isFavorite ? 1 : 0); // Actualiza el estado directamente
+        setFavoriteStatus(isFavorite ? 1 : 0); 
       } else {
         setFavoriteStatus(0);
       }
@@ -50,7 +49,6 @@ const setHeart = async (id_product, userUID) => {
   .update({
     'favorite': arrayUnion(userUID)
   })
-  console.log(`Usuario ${userUID} agregado a los favoritos del producto ${id_product}`)
 }
 
 const deleteHeart = async (id_product, userUID) => {
@@ -60,7 +58,6 @@ const deleteHeart = async (id_product, userUID) => {
   .update({
     'favorite': arrayRemove(userUID)
   })
-  console.log(`Usuario ${userUID} eliminado de los favoritos del producto ${id_product}`)
 }
 
 

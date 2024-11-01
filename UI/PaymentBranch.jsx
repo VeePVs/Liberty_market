@@ -3,11 +3,13 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PaymentItem from './Components/PaymentItem'
 import styles from '../styles/PaymentBranch'
+import { handleIntegrationMP } from './utils/MPintegration';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 
 const PaymentBranch = ({route }) => {
     const { items } = route.params; 
-    
+
     const handlePress = (url) => {
         Linking.openURL(url).catch((err) => 
             Alert.alert('Error', 'No se pudo abrir el enlace.')
@@ -32,6 +34,14 @@ const PaymentBranch = ({route }) => {
         array[0] = array[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
         return array.join(',');
       }
+      
+    const handleBuy = async (items) => {
+        const data = await handleIntegrationMP(items)
+        if (!data) {
+            return console.log("Error")
+        }
+        InAppBrowser.open(data)
+    }
         
   return (
     <SafeAreaView style= {styles.container}>
@@ -59,6 +69,9 @@ const PaymentBranch = ({route }) => {
                 }}>
                     <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/146/146571.png", height: 60, width: 60 }} />
                </Pressable>
+               <Pressable onPress={async ()=> await handleBuy(items)} style={styles.paymentButton}>
+                    <Text style={styles.paymentButtonText}>Pagar con Mercado Pago</Text>
+                </Pressable>
             </View>
         </View>
     </SafeAreaView>

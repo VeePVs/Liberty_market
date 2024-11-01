@@ -96,7 +96,7 @@ export default function ItemDetail({route}) {
                 <View style={styles.detailsItems}>
                         {discount != 0 ?
                             (<Text style={styles.price}>${numFormat(price)}</Text>)
-                            : (<></>) 
+                            : (<></>)
                         }
                     <View style={styles.containerPrice}>
                         <Text style={styles.priceText}>${article.discount != 0 ? numFormat((article.price - article.price * (article.discount * 0.01))) : numFormat(article.price)}</Text>
