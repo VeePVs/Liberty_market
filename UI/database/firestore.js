@@ -78,5 +78,26 @@ const deleteHeart = async (id_product, userUID) => {
   })
 }
 
+const getFavoriteProducts = async (userUID, setFavoriteProducts) => {
+  const snapshot = await firestore()
+    .collection('Products')
+    .where('favorite', 'array-contains', userUID)
+    .get();
 
-export {getItems, getItem, setHeart, deleteHeart, getHeart,addComment,addQuestion}
+  const favorites = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  setFavoriteProducts(favorites);
+};
+
+const getUserProfile = async (userUID, setUserProfile) => {
+  const userDoc = await firestore()
+    .collection('Users')
+    .doc(userUID)
+    .get();
+
+  if (userDoc.exists) {
+    setUserProfile(userDoc.data());
+  }
+};
+
+
+export {getItems, getItem, setHeart, deleteHeart, getHeart,getFavoriteProducts, getUserProfile,addComment,addQuestion}
