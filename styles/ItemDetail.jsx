@@ -8,6 +8,41 @@ import {StyleSheet} from 'react-native';
     };
 
 export const styles = StyleSheet.create({
+    buttonQ: {
+        backgroundColor: '#243E8C',
+        borderRadius: 8,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        elevation: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        alignItems: 'center',
+        marginBottom:10
+    },
+    buttonTextQ: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    buttonC: {
+        backgroundColor: '#5DADEC',
+        borderRadius: 8,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        elevation: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        alignItems: 'center',
+    },
+    buttonTextC: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
     nameItem: {
         fontSize: 28,
         color: '#FFF',

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text,TextInput, ScrollView } from 'react-native';
+import { View, Text,TextInput, ScrollView, Pressable, Alert } from 'react-native';
 import React, {useContext, useReducer, useState, useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/ItemDetail';
@@ -9,7 +9,7 @@ import HeartIcon from './Components/Heart';
 import BuyButton from './Components/BuyButton';
 import {ItemsContext} from './context/ItemContext';
 import { UserContext } from './context/UserContext';
-import { deleteHeart, getItem, setHeart, getHeart } from './database/firestore';
+import { deleteHeart, getItem, setHeart, getHeart, addQuestion, addComment } from './database/firestore';
 
 
 const initialState = {
@@ -37,6 +37,8 @@ export default function ItemDetail({route}) {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [article, setArticle] = useState({})
     const [isFavorite, setIsFavorite] = useState(0);
+    const [comment, setComment] = useState("");
+    const [question, setQuestion] = useState("");
 
     useEffect(() => {
         const unsubscribe = getItem(id,setArticle);
@@ -124,7 +126,13 @@ export default function ItemDetail({route}) {
                 </View>
                 <View  style={styles.containerQC}>
                     <Text style={styles.questionsComments}>¿Tienes una pregunta del articulo?</Text>
-                    <TextInput style={styles.inputQuestionsComments} maxLength={100}  numberOfLines={4} multiline placeholder="Haz tu mejor pregunta." placeholderTextColor={'#8a8a8a'}/>
+                    <TextInput style={styles.inputQuestionsComments} maxLength={100}  numberOfLines={4} onChangeText={text => setQuestion(text)} multiline placeholder="Haz tu mejor pregunta." placeholderTextColor={'#8a8a8a'}/>
+                    <Pressable style={styles.buttonQ} onPress={()=> {
+                        question !== '' ? addQuestion(article.id, question) : Alert.alert('ERROR', 'No puedes enviar preguntas vacias.')
+
+                    }}>
+                            <Text style={styles.buttonTextQ}>Realiza tu pregunta</Text>
+                    </Pressable>
                     <Text style={{color: '#000'}}>Preguntas ya realizadas: </Text>
                     <View>
                         {questions.map((element, index) => (
@@ -148,7 +156,17 @@ export default function ItemDetail({route}) {
                             ))
                         }
                     </View>
-                    <TextInput style={styles.inputQuestionsComments} maxLength={200} numberOfLines={4} editable={state.rating!==0 ? true : false} multiline placeholder="Escribe una opinión sincera, deja tu comentario. (recuerda primero calificar)" placeholderTextColor={"#8a8a8a"}/>
+                    
+                    <TextInput style={styles.inputQuestionsComments} maxLength={200} onChangeText={text => setComment(text)} numberOfLines={4} editable={state.rating!==0 ? true : false} multiline placeholder="Escribe una opinión sincera, deja tu comentario. (recuerda primero calificar)" placeholderTextColor={"#8a8a8a"}/>
+                    {state.rating !== 0 ?
+                        <Pressable style={styles.buttonC} onPress={()=> {
+                            comment !== '' ? addComment(article.id, comment) : Alert.alert('ERROR', 'No puedes enviar comentarios vacios.')
+                            
+                        }}>
+                            <Text style={styles.buttonTextC}>Agregar comentario</Text>
+                        </Pressable>
+                        :
+                    ""}
                     <Text style={{color: '#000'}}>Comentarios sobre el producto: </Text>
                     <View>
                         {comments.map((element, index) => (

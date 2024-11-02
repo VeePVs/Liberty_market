@@ -72,7 +72,13 @@ const ProfileScreen = ({onSignOut}) => {
           </View>
         </View>
       </Modal>
-      <Pressable style={styles.logout} onPress={onSignOut}>
+      <Pressable style={styles.logout} onPress={async () => {
+          try {
+              await onSignOut();
+          } catch (error) {
+              console.error('Error', error);
+          }
+      }}>
         <Text style={styles.logoutText}>Cerrar sesión</Text>
       </Pressable>
     </View>

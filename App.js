@@ -20,7 +20,6 @@ import SearchBar from './UI/Components/SearchBar.jsx';
 import CartIcon from './UI/Components/CartIcon.jsx';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ItemsProvider } from './UI/context/ItemContext.js';
-import { items } from './UI/database/items.js';
 import { UserProvider } from './UI/context/UserContext.js';
 import { getItems } from './UI/database/firestore.js';
 
@@ -38,7 +37,7 @@ function AuthStack({setAuth}) {
     );
   }
 
-  function HomeStack({ filteredItems, handleSearch, setFilteredItems }) {
+  function HomeStack({ filteredItems, setFilteredItems }) {
     return (
       <Stack.Navigator initialRouteName="ListItems">
         <Stack.Screen name="ListItems" options={{ title: 'Lista de productos', headerShown:false }}>
@@ -132,31 +131,27 @@ const App = () => {
   };
 
   useEffect(() => {
-    const unsubscribe = getItems(setItems, setFilteredItems);
-    return () => unsubscribe(); 
-  }, []);
+    const unsubscribeItems = getItems(setItems, setFilteredItems);
+    return () => unsubscribeItems && unsubscribeItems(); 
+}, []);
 
   const handleSignOut = async () => {
     try {
-        await auth().signOut();  
-        setIsAuthenticated(false);  
+        await auth().signOut();
+        setIsAuthenticated(false);
     } catch (error) {
         console.error('Error al cerrar sesión: ', error);
     }
   };
 
-    useEffect(() => {
-      const subscriber = auth().onAuthStateChanged((user) => {
-          if (user) {
-              setIsAuthenticated(true);
-          } else {
-              setIsAuthenticated(false);
-          }
-          if (initializing) setInitializing(false);
-      });
-
-      return subscriber; 
-    }, [initializing,setIsAuthenticated]);
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged((user) => {
+        setIsAuthenticated(!!user); 
+        if (initializing) setInitializing(false);
+    });
+ 
+    return () => subscriber(); 
+ }, [initializing]);
 
     return(
       <UserProvider setAuth={setIsAuthenticated}>

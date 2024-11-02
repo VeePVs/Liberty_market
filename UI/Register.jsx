@@ -16,7 +16,8 @@ export default function Register() {
   const [selectedDepartment, setSelectedDepartment] = React.useState('');
   const [selectedCity, setSelectedCity] = React.useState('');
   const [Cities, setCities] = React.useState([]);
-  const {addUser} = useContext(UserContext);
+  const { setUserUID } = useContext(UserContext);
+
 
   function valideDate(text) {
     let date = text
@@ -87,7 +88,7 @@ export default function Register() {
       selectedDepartment,
       selectedCity,
     };
-    createUser(newUser);
+    createUser(newUser,setUserUID);
   };
 
   const handleDepartmentChange = (val) => {

@@ -2,12 +2,13 @@ import auth from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-async function createUser(newUser) {
+async function createUser(newUser, setUIDConext) {
     if( await verifyUser(newUser.user)){
         auth()
         .createUserWithEmailAndPassword(newUser.addressEmail, newUser.password)
         .then(userCredential => {
             const uid = userCredential.user.uid;
+            setUIDConext(uid)
             return firestore()
                 .collection('Users')
                 .doc(uid)
@@ -21,7 +22,7 @@ async function createUser(newUser) {
                 });
         })
         .then(() => {
-            return Alert.alert('Registro exitoso','El usuario ha sido creado exitosamente.');
+                return Alert.alert('Registro exitoso','El usuario ha sido creado exitosamente.');
         })
         .catch(error => {
             if (error.code === 'auth/email-already-in-use') {

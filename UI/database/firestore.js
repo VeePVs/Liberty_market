@@ -51,6 +51,24 @@ const setHeart = async (id_product, userUID) => {
   })
 }
 
+const addComment = async (id_product, comment) => {
+  await firestore()
+  .collection('Products')
+  .doc(String(id_product))
+  .update({
+    'comments': arrayUnion(comment)
+  })
+}
+
+const addQuestion = async (id_product, question) => {
+  await firestore()
+  .collection('Products')
+  .doc(String(id_product))
+  .update({
+    'questions': arrayUnion(question)
+  })
+}
+
 const deleteHeart = async (id_product, userUID) => {
   await firestore()
   .collection('Products')
@@ -61,4 +79,4 @@ const deleteHeart = async (id_product, userUID) => {
 }
 
 
-export {getItems, getItem, setHeart, deleteHeart, getHeart}
+export {getItems, getItem, setHeart, deleteHeart, getHeart,addComment,addQuestion}
