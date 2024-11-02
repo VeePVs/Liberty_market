@@ -42,12 +42,13 @@ const PaymentBranch = ({route }) => {
         }
         InAppBrowser.open(data)
     }
+
         
   return (
     <SafeAreaView style= {styles.container}>
         <ScrollView>
         {items.map((element, index) => (
-                    <PaymentItem name={element.name} description={element.description} price={element.price} key={index} image={element.image} quantity={element.count}/>
+                    <PaymentItem name={element.name} description={element.description} price={element.price} key={index} image={element.image} quantity={element.count} discount={element.discount}/>
                 ))}
             <Text style={{color: "#000"}}>Total a pagar: ${numFormat(calculateCheck())}</Text>
         </ScrollView>
