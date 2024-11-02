@@ -75,6 +75,20 @@ export const styles = StyleSheet.create({
         marginTop: 10,
         fontSize: 18,
     },
+    containerAuth: {
+        alignItems: 'center',
+        backgroundColor: '#243E8C',
+        borderRadius: 30,
+        paddingBottom: 30,
+        paddingTop: 30,
+        opacity: 0.85,
+    },
+    imgBackground: {
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignContent: 'center',
+    }
 })
 
 export default styles;
