@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
     },
     containerAuth: {
         alignItems: 'center',
-        backgroundColor: '#243E8C',
+        backgroundColor: '#3A5DAE',
         borderRadius: 30,
         paddingBottom: 30,
         paddingTop: 30,
@@ -88,7 +88,13 @@ export const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignContent: 'center',
-    }
+    },
+    logo: {
+        width: 150,
+        height: 150,
+        resizeMode: 'contain',
+        marginBottom: 20,
+    },
 })
 
 export default styles;

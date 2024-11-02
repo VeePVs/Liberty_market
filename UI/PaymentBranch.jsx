@@ -5,7 +5,7 @@ import PaymentItem from './Components/PaymentItem'
 import styles from '../styles/PaymentBranch'
 import { handleIntegrationMP } from './utils/MPintegration';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
-
+import logo from '../src/assets/mercadopago.png'
 
 const PaymentBranch = ({route }) => {
     const { items } = route.params; 
@@ -54,23 +54,8 @@ const PaymentBranch = ({route }) => {
         <View>
             <TextInput style={styles.input} placeholder='Ingresa la dirección a enviar.' maxLength={30} placeholderTextColor={"#005"}/>
             <View style={styles.paymentContainer}>
-                <Pressable onPress={()=>{
-                    handlePress("https://www.pse.com.co/persona")
-                }}>
-                        <Image source={{ uri: "https://chukuwata.org.co/wp-content/uploads/2019/01/Boton-Blanco-PSE.png", height: 60, width: 60 }} />
-                </Pressable>
-                <Pressable onPress={()=>{
-                    handlePress("https://www.efecty.com.co/web/")
-                }}>
-                    <Image source={{ uri: "https://seeklogo.com/images/E/efecty-colombia-logo-C4C6532B80-seeklogo.com.png", height: 60, width: 60 }} />
-                </Pressable>
-                <Pressable onPress={()=>{
-                    handlePress("https://www.mastercard.com.co/es-co.html")
-                }}>
-                    <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/146/146571.png", height: 60, width: 60 }} />
-               </Pressable>
                <Pressable onPress={async ()=> await handleBuy(items)} style={styles.paymentButton}>
-                    <Text style={styles.paymentButtonText}>Pagar con Mercado Pago</Text>
+                    <Image source={logo} style={styles.logo}/>
                 </Pressable>
             </View>
         </View>

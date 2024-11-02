@@ -21,10 +21,13 @@ export const styles = StyleSheet.create({
         justifyContent: "center"
     },
     paymentButton: {
-        height: 40,
+        height: 60,
+        width: 200,
         padding: 10,
         borderRadius: 5,
-        backgroundColor: `${colors.quaternary_color}`,
+        backgroundColor: '#67D5B5',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textPaymentButton: {
         color:"#000"
@@ -43,6 +46,10 @@ export const styles = StyleSheet.create({
         width: "auto",
         color: "#000",
         borderRadius: 10
+    },
+    logo: {
+        width:60,
+        height:70
     }
 })
 
