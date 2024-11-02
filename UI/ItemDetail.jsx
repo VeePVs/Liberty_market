@@ -9,7 +9,7 @@ import HeartIcon from './Components/Heart';
 import BuyButton from './Components/BuyButton';
 import {ItemsContext} from './context/ItemContext';
 import { UserContext } from './context/UserContext';
-import { deleteHeart, getItem, setHeart, getHeart, addQuestion, addComment } from './database/firestore';
+import { deleteHeart, getItem, setHeart, getHeart, addQuestion, addComment, getComments, getQuestions } from './database/firestore';
 
 
 const initialState = {
@@ -31,7 +31,7 @@ function numFormat(num) {
   }
 
 export default function ItemDetail({route}) {
-    const {id, name, price, description, features, image, questions, comments, favorite, discount} = route.params;
+    const {id, name, price, description, features, image, } = route.params;
     const { addItem, items, updateCount } = useContext(ItemsContext);
     const {userUID} = useContext(UserContext);
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -39,6 +39,35 @@ export default function ItemDetail({route}) {
     const [isFavorite, setIsFavorite] = useState(0);
     const [comment, setComment] = useState("");
     const [question, setQuestion] = useState("");
+    const [comments, setComments] = useState([]);
+    const [questions, setQuestions] = useState([]);
+
+    async function handleAddComment() {
+        if (comment !== '') {
+            await addComment(article.id, comment);
+            setComment("");
+        } else {
+            Alert.alert('ERROR', 'No puedes enviar comentarios vacios.');
+        }
+    }
+    
+    async function handleAddQuestion() {
+        if (question !== '') {
+            await addQuestion(article.id, question);
+            setQuestion("");
+        } else {
+            Alert.alert('ERROR', 'No puedes enviar preguntas vacias.');
+        }
+    }
+    useEffect(() => {
+        const unsubscribe = getComments(id, setComments);
+        return () => unsubscribe();
+      }, [id]);
+
+      useEffect(() => {
+        const unsubscribe = getQuestions(id, setQuestions);
+        return () => unsubscribe();
+      }, [id]);
 
     useEffect(() => {
         const unsubscribe = getItem(id,setArticle);
@@ -47,7 +76,7 @@ export default function ItemDetail({route}) {
 
 
     useEffect(() => {
-    getHeart(id, userUID, setIsFavorite);
+        getHeart(id, userUID, setIsFavorite);
     }, [id, userUID]);
 
     function findItem(items, id) {
@@ -70,14 +99,13 @@ export default function ItemDetail({route}) {
         article.favorite.map(favorite => {
             if (favorite == userUID) {
                 deleteHeart(product.id, userUID)
-                console.log('0')
                 return 0;
             } else{
                 setHeart(product.id, userUID)
-                console.log('1')
                 return 1;
             }
         })
+        
     }
 
     return (
@@ -96,7 +124,7 @@ export default function ItemDetail({route}) {
                 </View>
                     <Text style={styles.nameItem}>{article.name}</Text>
                 <View style={styles.detailsItems}>
-                        {discount != 0 ?
+                        {article.discount != 0 ?
                             (<Text style={styles.price}>${numFormat(price)}</Text>)
                             : (<></>)
                         }
@@ -126,12 +154,10 @@ export default function ItemDetail({route}) {
                 </View>
                 <View  style={styles.containerQC}>
                     <Text style={styles.questionsComments}>¿Tienes una pregunta del articulo?</Text>
-                    <TextInput style={styles.inputQuestionsComments} maxLength={100}  numberOfLines={4} onChangeText={text => setQuestion(text)} multiline placeholder="Haz tu mejor pregunta." placeholderTextColor={'#8a8a8a'}/>
-                    <Pressable style={styles.buttonQ} onPress={()=> {
-                        question !== '' ? addQuestion(article.id, question) : Alert.alert('ERROR', 'No puedes enviar preguntas vacias.');
-
-                    }}>
-                            <Text style={styles.buttonTextQ}>Realiza tu pregunta</Text>
+                    <TextInput style={styles.inputQuestionsComments} value={question} maxLength={100}  numberOfLines={4} onChangeText={text => setQuestion(text)} multiline placeholder="Haz tu mejor pregunta." placeholderTextColor={'#8a8a8a'}/>
+                    
+                    <Pressable style={styles.buttonQ} onPress={handleAddQuestion}>
+                        <Text style={styles.buttonTextQ}>Realiza tu pregunta</Text>
                     </Pressable>
                     <Text style={{color: '#000'}}>Preguntas ya realizadas: </Text>
                     <View>
@@ -157,12 +183,9 @@ export default function ItemDetail({route}) {
                         }
                     </View>
                     
-                    <TextInput style={styles.inputQuestionsComments} maxLength={200} onChangeText={text => setComment(text)} numberOfLines={4} editable={state.rating!==0 ? true : false} multiline placeholder="Escribe una opinión sincera, deja tu comentario. (recuerda primero calificar)" placeholderTextColor={"#8a8a8a"}/>
+                    <TextInput style={styles.inputQuestionsComments} value={comment} maxLength={200} onChangeText={text => setComment(text)} numberOfLines={4} editable={state.rating!==0 ? true : false} multiline placeholder="Escribe una opinión sincera, deja tu comentario. (recuerda primero calificar)" placeholderTextColor={"#8a8a8a"}/>
                     {state.rating !== 0 ?
-                        <Pressable style={styles.buttonC} onPress={()=> {
-                            comment !== '' ? addComment(article.id, comment) : Alert.alert('ERROR', 'No puedes enviar comentarios vacios.')
-                            
-                        }}>
+                        <Pressable style={styles.buttonC} onPress={handleAddComment}>
                             <Text style={styles.buttonTextC}>Agregar comentario</Text>
                         </Pressable>
                         :

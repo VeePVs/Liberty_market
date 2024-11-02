@@ -27,6 +27,46 @@ const getItems = (setItems, setFilteredItems) => {
     return unsubscribe;
 };
 
+const getComments = (id, setComments) => {
+  const unsubscribe = firestore()
+    .collection('Products')
+    .where('id', '==', parseInt(id)) 
+    .onSnapshot((snapshot) => {
+      const allComments = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.comments && Array.isArray(data.comments)) {
+          allComments.push(...data.comments);
+        }
+      });
+      setComments(allComments);
+    }, (error) => {
+      console.error("Error fetching comments: ", error);
+    });
+
+  return unsubscribe; 
+};
+
+const getQuestions = (id, setQuestions) => {
+  const unsubscribe = firestore()
+    .collection('Products')
+    .where('id', '==', parseInt(id)) 
+    .onSnapshot((snapshot) => {
+      const allQuestions = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.questions && Array.isArray(data.questions)) {
+          allQuestions.push(...data.questions);
+        }
+      });
+      setQuestions(allQuestions);
+    }, (error) => {
+      console.error("Error fetching comments: ", error);
+    });
+
+  return unsubscribe; 
+};
+
 const getHeart = (id_product, userUID, setFavoriteStatus) => {
   firestore()
     .collection('Products')
@@ -100,4 +140,4 @@ const getUserProfile = async (userUID, setUserProfile) => {
 };
 
 
-export {getItems, getItem, setHeart, deleteHeart, getHeart,getFavoriteProducts, getUserProfile,addComment,addQuestion}
+export {getItems, getItem, setHeart, deleteHeart, getHeart,getFavoriteProducts, getUserProfile,addComment,addQuestion, getComments, getQuestions}

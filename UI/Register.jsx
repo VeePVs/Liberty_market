@@ -21,16 +21,21 @@ export default function Register() {
 
 
   function valideDate(text) {
-    let date = text
+    let date = text;
 
-    if(date.length == 2){
-      date = date + '/'
+    if (text.length < birthdate.length) {
+        setBirthdate(text);
+        return;
     }
-    if (date.length == 5) {
-      date = date + '/'
+
+    if (text.length === 2 && text[2] !== '/') {
+        date += '/';
+    } else if (text.length === 5 && text[5] !== '/') {
+        date += '/';
     }
-    setBirthdate(date)
-  }
+
+    setBirthdate(date);
+}
 
   const colombia = [
     { key: '1', value: 'Antioquia', capital: 'Medellín', cities: ['Medellín', 'Bello', 'Itagüí', 'Envigado', 'Apartadó'] },
