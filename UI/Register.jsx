@@ -1,5 +1,5 @@
-import {Text,TextInput, Pressable, Alert } from 'react-native';
-import React, {useContext} from 'react';
+import {Text,TextInput, Pressable, Alert, View, ActivityIndicator } from 'react-native';
+import React, {useContext, useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/Register';
 import PasswordInput from './Components/PasswordInput';
@@ -8,15 +8,16 @@ import {createUser} from './Auth/fireAuth';
 import {UserContext} from './context/UserContext.js';
 
 export default function Register() {
-  const [user, setUser] = React.useState('');
-  const [addressEmail, setAddressEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [birthdate, setBirthdate] = React.useState('');
-  const [address, setAddress] = React.useState('');
-  const [selectedDepartment, setSelectedDepartment] = React.useState('');
-  const [selectedCity, setSelectedCity] = React.useState('');
-  const [Cities, setCities] = React.useState([]);
+  const [user, setUser] = useState('');
+  const [addressEmail, setAddressEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+  const [address, setAddress] = useState('');
+  const [selectedDepartment, setSelectedDepartment] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [Cities, setCities] = useState([]);
   const { setUserUID } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   function valideDate(text) {
@@ -65,7 +66,7 @@ export default function Register() {
     return age >= 18 && age <= 50;
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (password == '' || birthdate == '' || birthdate.length != 10 || address == '' || selectedCity == '' || selectedDepartment == '' || user == '' || addressEmail == '') {
       Alert.alert('Error', 'Tienes campos vacios o incorrectos');
       return;
@@ -78,17 +79,23 @@ export default function Register() {
       Alert.alert('Error', 'No está en el rango de edad para crear la cuenta o el formato esta incorrecto.');
       return;
     }
-
-    const newUser = {
-      user,
-      password,
-      addressEmail,
-      birthdate,
-      address,
-      selectedDepartment,
-      selectedCity,
-    };
-    createUser(newUser,setUserUID);
+    setIsLoading(true);
+    try {
+      const newUser = {
+        user,
+        password,
+        addressEmail,
+        birthdate,
+        address,
+        selectedDepartment,
+        selectedCity,
+      };
+      await createUser(newUser, setUserUID);
+    } catch (error) {
+      Alert.alert('Error', 'Hubo un problema al crear el usuario');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleDepartmentChange = (val) => {
@@ -145,6 +152,11 @@ export default function Register() {
         <Pressable style={styles.registerButton}  onPress={handleRegister}>
                 <Text style={styles.textButton}>Continuar</Text>
         </Pressable>
+        {isLoading && (
+        <View style={styles.loadingOverlay}>
+          <ActivityIndicator size="large" color="#fff" />
+        </View>
+      )}
       </SafeAreaView>
   );
 }

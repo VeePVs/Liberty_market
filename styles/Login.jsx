@@ -58,9 +58,23 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         marginTop: 10,
-        
     },
-    
+    loadingOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 10,
+    },
+    loadingText: {
+        color: '#fff',
+        marginTop: 10,
+        fontSize: 18,
+    },
 })
 
 export default styles;

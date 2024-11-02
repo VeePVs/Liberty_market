@@ -128,7 +128,7 @@ export default function ItemDetail({route}) {
                     <Text style={styles.questionsComments}>¿Tienes una pregunta del articulo?</Text>
                     <TextInput style={styles.inputQuestionsComments} maxLength={100}  numberOfLines={4} onChangeText={text => setQuestion(text)} multiline placeholder="Haz tu mejor pregunta." placeholderTextColor={'#8a8a8a'}/>
                     <Pressable style={styles.buttonQ} onPress={()=> {
-                        question !== '' ? addQuestion(article.id, question) : Alert.alert('ERROR', 'No puedes enviar preguntas vacias.')
+                        question !== '' ? addQuestion(article.id, question) : Alert.alert('ERROR', 'No puedes enviar preguntas vacias.');
 
                     }}>
                             <Text style={styles.buttonTextQ}>Realiza tu pregunta</Text>
