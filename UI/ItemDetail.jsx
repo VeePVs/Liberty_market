@@ -90,22 +90,19 @@ export default function ItemDetail({route}) {
 
     async function printHeart(product) {
         const article = await product;
-        console.log(article)
         if (article.favorite.length == 0) {
             setHeart(product.id, userUID)
-            console.log('10')
             return 1;
         } 
         article.favorite.map(favorite => {
             if (favorite == userUID) {
-                deleteHeart(product.id, userUID)
+                deleteHeart(product.id, userUID);
                 return 0;
             } else{
-                setHeart(product.id, userUID)
+                setHeart(product.id, userUID);
                 return 1;
             }
-        })
-        
+        });
     }
 
     return (
