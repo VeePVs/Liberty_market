@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, Image } from 'react-native';
 import React from 'react';
 import styles from '../../styles/Item';
 import Animated from 'react-native-reanimated';
@@ -13,7 +13,7 @@ export default function Item({id, name, description, price, image, questions, co
   return (
     <View>
       <Pressable style={styles.containerItem} onPress={onPress}>
-          <Animated.Image style={styles.imgItem} source={{uri: image}} sharedTransitionTag={`item-${id}`}/>
+          <Image style={styles.imgItem} source={{uri: image}} sharedTransitionTag={`item-${id}`}/>
           <View style= {styles.containerItemText}>
               <Text style={styles.nameItem}>{name}</Text>
               <Text style={styles.textItem}>{description}</Text>
