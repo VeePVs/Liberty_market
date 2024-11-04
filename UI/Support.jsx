@@ -34,12 +34,13 @@ const Support = () => {
     <ScrollView style={styles.container}>
       <RequestTypeButtons 
         requestType={requestType} 
-        setRequestType={setRequestType} 
+        setRequestType={setRequestType}
+        setDescription={setDescription}
       />
 
       <DescriptionInput 
         description={description} 
-        setDescription={setDescription} 
+        setDescription={setDescription}
       />
 
       <Button title="Enviar" onPress={handleSend} />

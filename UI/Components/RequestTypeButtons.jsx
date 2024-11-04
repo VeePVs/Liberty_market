@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import styles from '../../styles/SupportStyle'; 
 
-const RequestTypeButtons = ({ requestType, setRequestType }) => {
+const RequestTypeButtons = ({ requestType, setRequestType, setDescription }) => {
   return (
     <View style={styles.fieldContainer}>
       <Text style={styles.label}>Tipo de solicitud:</Text>
@@ -14,7 +14,10 @@ const RequestTypeButtons = ({ requestType, setRequestType }) => {
               styles.button,
               requestType === item && styles.buttonSelected,
             ]}
-            onPress={() => setRequestType(item)}
+            onPress={() => {
+              setRequestType(item);
+              setDescription('');
+            }}
           >
             <Text style={styles.buttonText}>{item}</Text>
           </Pressable>

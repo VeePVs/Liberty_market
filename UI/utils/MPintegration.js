@@ -10,7 +10,13 @@ export const handleIntegrationMP = async (items)=> {
             unit_price: item.discount
                 ? parseInt(item.price - item.price * (item.discount * 0.01))
                 : parseInt(item.price),
-        }))
+        })),
+        back_urls:{
+            success: 'https://github.com/VeePVs',
+            failure: 'https://github.com/VeePVs',
+            pending: 'https://github.com/VeePVs',
+        },
+        auto_return: 'approved',
     };
 
     try {

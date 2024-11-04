@@ -47,6 +47,11 @@ const styles = StyleSheet.create({
     unavailable: {
       color: 'red',
     },
+    noFav: {
+      color: "#000",
+      alignSelf: 'center',
+      fontSize: 20
+    }
   });
 
   export default styles;

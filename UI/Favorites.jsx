@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ScrollView} from 'react-native';
+import { ScrollView, Text} from 'react-native';
 import ProductItem from './Components/ProductItem';
 import styles from '../styles/FavoritesStyle';
 import { UserContext } from './context/UserContext';
@@ -23,9 +23,12 @@ const FavoritesScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      {favoriteProducts.map((product) => (
+      {favoriteProducts.length !== 0 ? 
+      favoriteProducts.map((product) => (
         <ProductItem key={product.id} product={product} />
-      ))}
+      )) :
+        (<Text style={styles.noFav}>No tienes productos en favoritos</Text>)
+      }
     </ScrollView>
   );
 };
