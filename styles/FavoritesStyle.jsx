@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       padding: 16,
+      backgroundColor: '#FFF',
     },
     productContainer: {
       flexDirection: 'row',
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
       color: "#000",
       flex: 1,
       justifyContent: 'center',
+      margin: 10
     },
     titleContainer: {
       flexDirection: 'row',

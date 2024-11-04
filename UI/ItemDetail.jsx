@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text,TextInput, ScrollView, Pressable, Alert } from 'react-native';
+import { View, Text,TextInput, ScrollView, Pressable, Alert, Image } from 'react-native';
 import React, {useContext, useReducer, useState, useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/ItemDetail';
@@ -7,6 +7,7 @@ import Stars from './Components/Stars';
 import Animated from 'react-native-reanimated';
 import HeartIcon from './Components/Heart';
 import BuyButton from './Components/BuyButton';
+import auth from '@react-native-firebase/auth';
 import {ItemsContext} from './context/ItemContext';
 import { UserContext } from './context/UserContext';
 import { deleteHeart, getItem, setHeart, getHeart, addQuestion, addComment, getComments, getQuestions } from './database/firestore';
@@ -31,9 +32,8 @@ function numFormat(num) {
   }
 
 export default function ItemDetail({route}) {
-    const {id, name, price, description, features, image, } = route.params;
+    const {id, price,features} = route.params;
     const { addItem, items, updateCount } = useContext(ItemsContext);
-    const {userUID} = useContext(UserContext);
     const [state, dispatch] = useReducer(reducer, initialState);
     const [article, setArticle] = useState({})
     const [isFavorite, setIsFavorite] = useState(0);
@@ -42,6 +42,7 @@ export default function ItemDetail({route}) {
     const [comments, setComments] = useState([]);
     const [questions, setQuestions] = useState([]);
 
+    
     async function handleAddComment() {
         if (comment !== '') {
             await addComment(article.id, comment);
@@ -76,8 +77,11 @@ export default function ItemDetail({route}) {
 
 
     useEffect(() => {
-        getHeart(id, userUID, setIsFavorite);
-    }, [id, userUID]);
+        const user = auth().currentUser.uid;
+        if (user) {
+          getHeart(id, user, setIsFavorite);
+        }
+    }, [id]);
 
     function findItem(items, id) {
         return items.some((item) => {
@@ -91,15 +95,15 @@ export default function ItemDetail({route}) {
     async function printHeart(product) {
         const article = await product;
         if (article.favorite.length == 0) {
-            setHeart(product.id, userUID)
+            setHeart(product.id, auth().currentUser.uid)
             return 1;
         } 
         article.favorite.map(favorite => {
-            if (favorite == userUID) {
-                deleteHeart(product.id, userUID);
+            if (favorite == auth().currentUser.uid) {
+                deleteHeart(product.id, auth().currentUser.uid);
                 return 0;
             } else{
-                setHeart(product.id, userUID);
+                setHeart(product.id, auth().currentUser.uid);
                 return 1;
             }
         });
@@ -110,7 +114,7 @@ export default function ItemDetail({route}) {
             <ScrollView style={styles.containerItemDetail}>
                 <View style={styles.containerImage}>
                 {article.image ? (
-                    <Animated.Image source={{ uri: article.image, width: 300, height: 300 }} style={{ alignSelf: 'center' }} sharedTransitionTag={`item-${id}`} />
+                    <Image source={{ uri: article.image, width: 300, height: 300 }} style={{ alignSelf: 'center' }} sharedTransitionTag={`item-${id}`} />
                 ) : (
                     <Text>Imagen no disponible</Text>
                 )}
