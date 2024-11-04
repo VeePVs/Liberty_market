@@ -41,11 +41,19 @@ const ShoppingCart = ({navigation}) => {
 
   return (
         <SafeAreaView style={styles.container}>
-            <FlatList 
-                data={items}
-                renderItem={({item})=><ShopItem key={item.id} id={item.id} name={item.name} description={item.description} image={item.image}  price={item.price} discount={item.discount} count={item.count}/>}
-                keyExtractor={items.id}
-            />
+            {
+                items.length !== 0 ?
+                    <FlatList 
+                        data={items}
+                        renderItem={({item})=><ShopItem key={item.id} id={item.id} name={item.name} description={item.description} image={item.image}  price={item.price} discount={item.discount} count={item.count}/>}
+                        keyExtractor={items.id}
+                    />
+                : (
+                    <View style={styles.containerNoProducts}>
+                        <Text style={styles.textNoProducts}>No tienes productos en el carrito</Text>
+                    </View>
+                )
+            }
             <View style={styles.paymentContainer}>
                 <Text>Total a pagar: ${numFormat(calculateCheck())}</Text>
                 <Pressable style={styles.paymentButton} disabled={items.length == 0 ? true : false}  onPress={()=>{
@@ -55,7 +63,7 @@ const ShoppingCart = ({navigation}) => {
                 </Pressable>
             </View>
         </SafeAreaView>
-    )
-}
+    );
+};
 
-export default ShoppingCart
+export default ShoppingCart;

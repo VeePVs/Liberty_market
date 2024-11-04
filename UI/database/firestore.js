@@ -68,7 +68,7 @@ const getQuestions = (id, setQuestions) => {
 };
 
 const getHeart = (id_product, userUID, setFavoriteStatus) => {
-  firestore()
+  return firestore()
     .collection('Products')
     .doc(String(id_product))
     .onSnapshot(snapshot => {
@@ -91,6 +91,16 @@ const setHeart = async (id_product, userUID) => {
   })
 }
 
+const deleteHeart = async (id_product, userUID) => {
+  console.log("sadasd")
+  await firestore()
+  .collection('Products')
+  .doc(String(id_product))
+  .update({
+    'favorite': arrayRemove(userUID)
+  })
+}
+
 const addComment = async (id_product, comment) => {
   await firestore()
   .collection('Products')
@@ -109,14 +119,7 @@ const addQuestion = async (id_product, question) => {
   })
 }
 
-const deleteHeart = async (id_product, userUID) => {
-  await firestore()
-  .collection('Products')
-  .doc(String(id_product))
-  .update({
-    'favorite': arrayRemove(userUID)
-  })
-}
+
 
 const getFavoriteProducts = async (userUID, setFavoriteProducts) => {
   const snapshot = await firestore()
@@ -139,5 +142,18 @@ const getUserProfile = async (userUID, setUserProfile) => {
   }
 };
 
+const getOffers = async (setProducts) => {
+  const productsOffer = await firestore()
+    .collection('Products')
+    .where('discount', '!=', 0)
+    .onSnapshot(snapshot => {
+      const itemsFromFirebase = snapshot.docs.map(doc => {
+        return { id: doc.id, ...doc.data() };
+      }
+    );
+    setProducts(itemsFromFirebase);
+    });
+  };
 
-export {getItems, getItem, setHeart, deleteHeart, getHeart,getFavoriteProducts, getUserProfile,addComment,addQuestion, getComments, getQuestions}
+
+export {getItems, getItem, setHeart, deleteHeart, getHeart,getFavoriteProducts, getUserProfile,addComment,addQuestion, getComments, getQuestions, getOffers};

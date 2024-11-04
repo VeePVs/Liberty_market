@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.2,
       shadowRadius: 5,
       elevation: 5,
+      alignItems: 'center',
     },
     offerImage: {
       width: 100,
@@ -37,8 +38,11 @@ const styles = StyleSheet.create({
       marginLeft: 16,
       flex: 1,
       justifyContent: 'center',
+      alignContent: 'center',
+      textAlign: 'center',
     },
     offerName: {
+      color: '#666',
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 4,

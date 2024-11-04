@@ -7,7 +7,6 @@ import { getFavoriteProducts } from './database/firestore';
 import auth from '@react-native-firebase/auth';
 
 const FavoritesScreen = ({navigation}) => {
-  const { userUID } = useContext(UserContext);
   const [favoriteProducts, setFavoriteProducts] = useState([]);
 
   useEffect(() => {
@@ -23,7 +22,7 @@ const FavoritesScreen = ({navigation}) => {
     };
 
     fetchFavorites();
-  }, [userUID,favoriteProducts]);
+  }, [favoriteProducts]);
 
   return (
     <ScrollView style={styles.container}>

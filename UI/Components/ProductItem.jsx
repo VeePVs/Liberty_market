@@ -4,10 +4,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../../styles/FavoritesStyle'; 
 import { deleteHeart } from '../database/firestore';
 import { UserContext } from '../context/UserContext';
+import auth from '@react-native-firebase/auth';
 
 const ProductItem = ({ product, navigation }) => {
-  const {userUID} = useContext(UserContext);
-
   function detailItemFunction(id ,price, features) {
     navigation.navigate('ItemDetail', {
         id: id,
@@ -17,31 +16,25 @@ const ProductItem = ({ product, navigation }) => {
   }
 
   return (
-    <Pressable onPress={()=>{
-      detailItemFunction(product.id, product.price, product.features)
-    }}>
       <View key={product.id} style={styles.productContainer}>
-        <Image source={{ uri: product.image }} style={styles.image} />
-        <View style={styles.infoContainer}>
+        <Pressable onPress={()=>{
+          detailItemFunction(product.id, product.price, product.features)
+        }}>
+          <Image source={{ uri: product.image,  cache: 'force-cache' }} style={styles.image} />
+        </Pressable>
+        <Pressable style={styles.infoContainer} onPress={()=>{
+          detailItemFunction(product.id, product.price, product.features)
+        }}>
           <View style={styles.titleContainer}>
             <Pressable onPress={()=>{
-              deleteHeart(product.id,userUID)
+              deleteHeart(product.id,auth().currentUser.uid);
             }}>
               <Icon name="heart" size={20} color="red" />
             </Pressable>
-            <Text style={styles.description}>{product.description}</Text>
+            <Text style={styles.description}>{product.name}</Text>
           </View>
-          <View style={styles.statusContainer}>
-            <Text style={[styles.status, product.status === 'Disponible' ? styles.available : styles.unavailable]}>
-              {product.status}
-            </Text>
-            {product.status === 'Disponible' && (
-              <Icon name="shopping-cart" size={20} color="black" style={styles.cartIcon} />
-            )}
-          </View>
-        </View>
+        </Pressable>
       </View>
-    </Pressable>
   );
 };
 

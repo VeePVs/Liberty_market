@@ -5,40 +5,39 @@ import styles from '../styles/CategoriesStyle';
 import CategoryItem from './Components/CategoryItem';
 import ProductItem from './Components/ProductItemCategory';
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({navigation}) => {
   const [categories, setCategories] = useState([]);
   const [productsFiltered, setProductsFiltered] = useState(null);
+  const categoriesData = [
+    {
+      id: 1,
+      name: 'Electronica',
+      image: 'https://www.extrasoft.es/wp-content/uploads/2022/10/5-TECNOLOGIAS.png',
+    },
+    {
+      id: 2,
+      name: 'Moda',
+      image: 'https://www.idiomasparaninos.com/images/es/ropa.png',
+    },
+    {
+      id: 3,
+      name: 'Hogar',
+      image: 'https://tisera.com/images/uploads/categoria-muebles-de-hogar.png',
+    },
+    {
+      id: 4,
+      name: 'Juguetes',
+      image: 'https://www.maderandia.com/pic/revslider/general/juguete-caballito.png',
+    },
+    {
+      id: 5,
+      name: 'Deportes',
+      image: 'https://png.pngtree.com/png-clipart/20210309/original/pngtree-balls-sports-set-png-image_5901834.png',
+    },
+  ];
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const categoriesData = [
-        {
-          id: 1,
-          name: 'Electronica',
-          image: 'https://www.extrasoft.es/wp-content/uploads/2022/10/5-TECNOLOGIAS.png',
-        },
-        {
-          id: 2,
-          name: 'Moda',
-          image: 'https://www.idiomasparaninos.com/images/es/ropa.png',
-        },
-        {
-          id: 3,
-          name: 'Hogar',
-          image: 'https://tisera.com/images/uploads/categoria-muebles-de-hogar.png',
-        },
-        {
-          id: 4,
-          name: 'Juguetes',
-          image: 'https://www.maderandia.com/pic/revslider/general/juguete-caballito.png',
-        },
-        {
-          id: 5,
-          name: 'Deportes',
-          image: 'https://png.pngtree.com/png-clipart/20210309/original/pngtree-balls-sports-set-png-image_5901834.png',
-        },
-      ];
-
       const productsSnapshot = await firestore().collection('Products').get();
       const productsData = productsSnapshot.docs.map((doc) => doc.data());
 
@@ -56,6 +55,15 @@ const CategoriesScreen = () => {
   const handleCategorySelected = (category) => {
     setProductsFiltered(category.products);
   };
+
+  function detailItemFunction(id ,price, features) {
+    navigation.navigate('ItemDetail', {
+        id: id,
+        price: price,
+        features: features,
+    });
+  }
+
   return (
     <ScrollView style={styles.container}>
       {!productsFiltered ? (
@@ -78,7 +86,11 @@ const CategoriesScreen = () => {
           </Pressable>
           <View style={styles.productContainer}>
             {productsFiltered.map((product) => (
-              <ProductItem key={product.id} product={product} />
+              <Pressable key={product.id} onPress={()=> {
+                detailItemFunction(product.id, product.price, product.features)
+              }}>
+                <ProductItem key={product.id} product={product} />
+              </Pressable>
             ))}
           </View>
         </>

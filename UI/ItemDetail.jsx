@@ -9,8 +9,7 @@ import HeartIcon from './Components/Heart';
 import BuyButton from './Components/BuyButton';
 import auth from '@react-native-firebase/auth';
 import {ItemsContext} from './context/ItemContext';
-import { UserContext } from './context/UserContext';
-import { deleteHeart, getItem, setHeart, getHeart, addQuestion, addComment, getComments, getQuestions } from './database/firestore';
+import {getItem, addQuestion, addComment, getComments, getQuestions } from './database/firestore';
 
 
 const initialState = {
@@ -75,14 +74,6 @@ export default function ItemDetail({route}) {
         return () => unsubscribe;
       }, [id]);
 
-
-    useEffect(() => {
-        const user = auth().currentUser.uid;
-        if (user) {
-          getHeart(id, user, setIsFavorite);
-        }
-    }, [id]);
-
     function findItem(items, id) {
         return items.some((item) => {
             if (parseInt(item.id) === parseInt(id)) {
@@ -92,36 +83,18 @@ export default function ItemDetail({route}) {
         });
     }
 
-    async function printHeart(product) {
-        const article = await product;
-        if (article.favorite.length == 0) {
-            setHeart(product.id, auth().currentUser.uid)
-            return 1;
-        } 
-        article.favorite.map(favorite => {
-            if (favorite == auth().currentUser.uid) {
-                deleteHeart(product.id, auth().currentUser.uid);
-                return 0;
-            } else{
-                setHeart(product.id, auth().currentUser.uid);
-                return 1;
-            }
-        });
-    }
-
     return (
         <SafeAreaView>
             <ScrollView style={styles.containerItemDetail}>
                 <View style={styles.containerImage}>
                 {article.image ? (
-                    <Image source={{ uri: article.image, width: 300, height: 300 }} style={{ alignSelf: 'center' }} sharedTransitionTag={`item-${id}`} />
+                    <Image source={{ uri: article.image, width: 300, height: 300,  cache: 'force-cache' }} style={{ alignSelf: 'center' }} sharedTransitionTag={`item-${id}`} />
                 ) : (
                     <Text>Imagen no disponible</Text>
                 )}
                     <HeartIcon 
-                        isOn={() => { printHeart(article); }}
-                        getHeart={isFavorite}
-                        />
+                        id_product={article.id}
+                    />
                 </View>
                     <Text style={styles.nameItem}>{article.name}</Text>
                 <View style={styles.detailsItems}>

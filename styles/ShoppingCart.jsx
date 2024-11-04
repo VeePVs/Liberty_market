@@ -19,6 +19,14 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: "center"
     },
+    textNoProducts: {
+        color: '#000',
+        alignSelf: 'center',
+        fontSize: 20,
+    },
+    containerNoProducts: {
+        height: '88%',
+    },
     paymentButton: {
         height: 40,
         padding: 10,

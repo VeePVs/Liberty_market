@@ -13,7 +13,7 @@ export default function Item({id, name, description, price, image, questions, co
   return (
     <View>
       <Pressable style={styles.containerItem} onPress={onPress}>
-          <Image style={styles.imgItem} source={{uri: image}} sharedTransitionTag={`item-${id}`}/>
+          <Image style={styles.imgItem} source={{uri: image, cache: 'force-cache'}} sharedTransitionTag={`item-${id}`}/>
           <View style= {styles.containerItemText}>
               <Text style={styles.nameItem}>{name}</Text>
               <Text style={styles.textItem}>{description}</Text>
